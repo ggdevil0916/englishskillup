@@ -112,7 +112,6 @@ input[type=checkbox]{accent-color:var(--green);width:18px;height:18px;cursor:poi
 .wcheck{color:var(--green);}
 .sec-title{font-size:12px;color:var(--text3);margin-bottom:5px;padding-left:2px;}
 .filter-btn-active{background:var(--blue)!important;color:white!important;border-color:var(--blue)!important;}
-/* 検索 */
 .search-wrap{margin-bottom:10px;position:relative;}
 .search-input{width:100%;padding:11px 14px 11px 40px;font-size:14px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);}
 .search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(29,158,117,0.15);}
@@ -145,7 +144,6 @@ mark{background:#FFF3C4;border-radius:2px;padding:0 1px;}
     <button class="tab-nav-btn" onclick="switchMode('search')"><i class="ti ti-search"></i> 検索</button>
   </div>
 
-  <!-- 学習セクション -->
   <div class="section visible" id="sec-learn">
     <div class="top-bar">
       <span class="scene-label" id="topLabel">タクシー — Lv.1 初級</span>
@@ -168,7 +166,7 @@ mark{background:#FFF3C4;border-radius:2px;padding:0 1px;}
       <div class="phonetic" id="phonetic"></div>
       <div class="ja-word" id="jaWord" style="opacity:0;">—</div>
       <hr class="divider">
-      <div class="phrase-label"><i class="ti ti-quote"></i> 熟語・フレーズ</div>
+      <div class="phrase-label"><i class="ti ti-quote"></i> 例文・フレーズ</div>
       <div class="phrase-en" id="phraseEn">—</div>
       <div class="phrase-ph" id="phrasePh"></div>
       <div class="phrase-ja" id="phraseJa">—</div>
@@ -205,7 +203,7 @@ mark{background:#FFF3C4;border-radius:2px;padding:0 1px;}
         <input type="checkbox" id="hideJpCk">
       </div>
       <div class="setting-row">
-        <span class="setting-lbl"><i class="ti ti-quote"></i> 熟語をスキップ</span>
+        <span class="setting-lbl"><i class="ti ti-quote"></i> 例文をスキップ</span>
         <input type="checkbox" id="skipPhraseCk">
       </div>
     </div>
@@ -213,7 +211,6 @@ mark{background:#FFF3C4;border-radius:2px;padding:0 1px;}
     <div class="word-list-wrap" id="wordList"></div>
   </div>
 
-  <!-- 検索セクション -->
   <div class="section" id="sec-search">
     <div class="search-wrap">
       <i class="ti ti-search search-icon"></i>
@@ -229,7 +226,7 @@ mark{background:#FFF3C4;border-radius:2px;padding:0 1px;}
         <div class="phonetic" id="spPhonetic"></div>
         <div class="ja-word" id="spJaWord">—</div>
         <hr class="divider">
-        <div class="phrase-label"><i class="ti ti-quote"></i> 熟語・フレーズ</div>
+        <div class="phrase-label"><i class="ti ti-quote"></i> 例文・フレーズ</div>
         <div class="phrase-en" id="spPhraseEn">—</div>
         <div class="phrase-ph" id="spPhrasePh"></div>
         <div class="phrase-ja" id="spPhraseJa">—</div>
@@ -270,6 +267,38 @@ const DB={
       {en:'Go straight',ph:'/ɡoʊ streɪt/',ja:'まっすぐ進む',phrase:'Go straight for about two blocks.',phrasePh:'/ɡoʊ streɪt fɔːr əˈbaʊt tuː blɒks/',phraseJa:'2ブロックほどまっすぐ進んでください。'},
       {en:'The fare is',ph:'/ðə fer ɪz/',ja:'料金は〜です',phrase:'The fare is twelve hundred yen.',phrasePh:'/ðə fer ɪz twelv ˈhʌndrəd jen/',phraseJa:'料金は1,200円です。'},
       {en:'Receipt',ph:'/rɪˈsiːt/',ja:'領収書',phrase:'Would you like a receipt?',phrasePh:'/wʊd juː laɪk ə rɪˈsiːt/',phraseJa:'領収書はご入り用ですか？'},
+      {en:'Please stop here',ph:'/pliːz stɒp hɪr/',ja:'ここで止めてください',phrase:'Could you stop here, please?',phrasePh:'/kʊd juː stɒp hɪr pliːz/',phraseJa:'ここで止めていただけますか？'},
+      {en:'Seat belt',ph:'/siːt belt/',ja:'シートベルト',phrase:'Please fasten your seat belt.',phrasePh:'/pliːz ˈfæsən jɔːr siːt belt/',phraseJa:'シートベルトをお締めください。'},
+      {en:'Cash only',ph:'/kæʃ ˈoʊnli/',ja:'現金のみ',phrase:'Sorry, this taxi is cash only.',phrasePh:'/ˈsɒri ðɪs ˈtæksi ɪz kæʃ ˈoʊnli/',phraseJa:'申し訳ありませんが、現金のみのお取り扱いです。'},
+      {en:'Change',ph:'/tʃeɪndʒ/',ja:'お釣り',phrase:'Here is your change.',phrasePh:'/hɪr ɪz jɔːr tʃeɪndʒ/',phraseJa:'こちらがお釣りです。'},
+      {en:'Left luggage',ph:'/left ˈlʌɡɪdʒ/',ja:'忘れ物',phrase:'Excuse me, you have left your bag.',phrasePh:'/ɪkˈskjuːz miː juː hæv left jɔːr bæɡ/',phraseJa:'すみません、バッグを忘れましたよ。'},
+      {en:'Driver',ph:'/ˈdraɪvər/',ja:'運転手',phrase:'The driver will take you there safely.',phrasePh:'/ðə ˈdraɪvər wɪl teɪk juː ðer ˈseɪfli/',phraseJa:'運転手が安全にお連れします。'},
+      {en:'Meter',ph:'/ˈmiːtər/',ja:'メーター',phrase:'The meter is already running.',phrasePh:'/ðə ˈmiːtər ɪz ɔːlˈredi ˈrʌnɪŋ/',phraseJa:'メーターはすでに動いています。'},
+      {en:'Hurry up',ph:'/ˈhɜːri ʌp/',ja:'急いでください',phrase:'Could you hurry up a little?',phrasePh:'/kʊd juː ˈhɜːri ʌp ə ˈlɪtl/',phraseJa:'少し急いでいただけますか？'},
+      {en:'Slow down',ph:'/sloʊ daʊn/',ja:'ゆっくり走る',phrase:'Could you slow down a bit, please?',phrasePh:'/kʊd juː sloʊ daʊn ə bɪt pliːz/',phraseJa:'少しゆっくり走っていただけますか？'},
+      {en:'Air conditioning',ph:'/er kənˈdɪʃənɪŋ/',ja:'エアコン',phrase:'Could you turn up the air conditioning?',phrasePh:'/kʊd juː tɜːrn ʌp ðə er kənˈdɪʃənɪŋ/',phraseJa:'エアコンを強くしていただけますか？'},
+      {en:'Window',ph:'/ˈwɪndoʊ/',ja:'窓',phrase:'Could you open the window a little?',phrasePh:'/kʊd juː ˈoʊpən ðə ˈwɪndoʊ ə ˈlɪtl/',phraseJa:'窓を少し開けていただけますか？'},
+      {en:'Station',ph:'/ˈsteɪʃən/',ja:'駅',phrase:'Please take me to Sapporo Station.',phrasePh:'/pliːz teɪk miː tə ˌsæpɔːroʊ ˈsteɪʃən/',phraseJa:'札幌駅までお願いします。'},
+      {en:'Hotel',ph:'/hoʊˈtel/',ja:'ホテル',phrase:'Please take me to the Grand Hotel.',phrasePh:'/pliːz teɪk miː tə ðə ɡrænd hoʊˈtel/',phraseJa:'グランドホテルまでお願いします。'},
+      {en:'Airport',ph:'/ˈerpɔːrt/',ja:'空港',phrase:'I need to get to the airport by ten.',phrasePh:'/aɪ niːd tə ɡet tə ðə ˈerpɔːrt baɪ ten/',phraseJa:'10時までに空港に着かなければなりません。'},
+      {en:'How long?',ph:'/haʊ lɒŋ/',ja:'どのくらいかかりますか？',phrase:'How long will it take to get there?',phrasePh:'/haʊ lɒŋ wɪl ɪt teɪk tə ɡet ðer/',phraseJa:'そこまでどのくらいかかりますか？'},
+      {en:'About',ph:'/əˈbaʊt/',ja:'〜くらい',phrase:'It will take about fifteen minutes.',phrasePh:'/ɪt wɪl teɪk əˈbaʊt ˈfɪfˈtiːn ˈmɪnɪts/',phraseJa:'15分くらいかかります。'},
+      {en:'Arrive',ph:'/əˈraɪv/',ja:'到着する',phrase:'We will arrive in about ten minutes.',phrasePh:'/wiː wɪl əˈraɪv ɪn əˈbaʊt ten ˈmɪnɪts/',phraseJa:'約10分で到着します。'},
+      {en:'Thank you for riding',ph:'/ˈθæŋk juː fɔːr ˈraɪdɪŋ/',ja:'ご乗車ありがとうございました',phrase:'Thank you for riding with us today.',phrasePh:'/ˈθæŋk juː fɔːr ˈraɪdɪŋ wɪð ʌs təˈdeɪ/',phraseJa:'本日はご乗車ありがとうございました。'},
+      {en:'Take care',ph:'/teɪk ker/',ja:'お気をつけて',phrase:'Take care and have a wonderful day.',phrasePh:'/teɪk ker ænd hæv ə ˈwʌndərfəl deɪ/',phraseJa:'お気をつけて、良い一日を。'},
+      {en:'On the left',ph:'/ɒn ðə left/',ja:'左側に',phrase:'The hotel is on the left side.',phrasePh:'/ðə hoʊˈtel ɪz ɒn ðə left saɪd/',phraseJa:'ホテルは左側にあります。'},
+      {en:'On the right',ph:'/ɒn ðə raɪt/',ja:'右側に',phrase:'The entrance is on the right.',phrasePh:'/ðə ˈentrəns ɪz ɒn ðə raɪt/',phraseJa:'入口は右側にあります。'},
+      {en:'In front of',ph:'/ɪn frʌnt əv/',ja:'〜の前で',phrase:'Please stop in front of the building.',phrasePh:'/pliːz stɒp ɪn frʌnt əv ðə ˈbɪldɪŋ/',phraseJa:'建物の前で止めてください。'},
+      {en:'Next to',ph:'/nekst tuː/',ja:'〜の隣に',phrase:'It is right next to the convenience store.',phrasePh:'/ɪt ɪz raɪt nekst tuː ðə kənˈviːniəns stɔːr/',phraseJa:'コンビニのすぐ隣にあります。'},
+      {en:'Traffic light',ph:'/ˈtræfɪk laɪt/',ja:'信号',phrase:'Please stop at the next traffic light.',phrasePh:'/pliːz stɒp æt ðə nekst ˈtræfɪk laɪt/',phraseJa:'次の信号で止まってください。'},
+      {en:'U-turn',ph:'/ˈjuːtɜːrn/',ja:'Uターン',phrase:'Please make a U-turn here.',phrasePh:'/pliːz meɪk ə ˈjuːtɜːrn hɪr/',phraseJa:'ここでUターンしてください。'},
+      {en:'Drop off',ph:'/drɒp ɒf/',ja:'降ろす',phrase:'You can drop me off at the corner.',phrasePh:'/juː kæn drɒp miː ɒf æt ðə ˈkɔːrnər/',phraseJa:'角で降ろしていただければ結構です。'},
+      {en:'Map',ph:'/mæp/',ja:'地図',phrase:'Could you check the map for me?',phrasePh:'/kʊd juː tʃek ðə mæp fɔːr miː/',phraseJa:'地図を確認していただけますか？'},
+      {en:'Address',ph:'/ˈædrəs/',ja:'住所',phrase:'I have the address written down here.',phrasePh:'/aɪ hæv ðə ˈædrəs ˈrɪtən daʊn hɪr/',phraseJa:'住所をここに書いてあります。'},
+      {en:'Landmark',ph:'/ˈlændmɑːrk/',ja:'目印',phrase:'The landmark is the big red building.',phrasePh:'/ðə ˈlændmɑːrk ɪz ðə bɪɡ red ˈbɪldɪŋ/',phraseJa:'目印は大きな赤い建物です。'},
+      {en:'No smoking',ph:'/noʊ ˈsmoʊkɪŋ/',ja:'禁煙',phrase:'This is a no smoking vehicle.',phrasePh:'/ðɪs ɪz ə noʊ ˈsmoʊkɪŋ ˈviːɪkəl/',phraseJa:'こちらは禁煙車両です。'},
+      {en:'Night rate',ph:'/naɪt reɪt/',ja:'深夜料金',phrase:'The night rate applies after eleven PM.',phrasePh:'/ðə naɪt reɪt əˈplaɪz ˈæftər ɪˈlevən piːˈem/',phraseJa:'夜11時以降は深夜料金が適用されます。'},
+      {en:'Passenger',ph:'/ˈpæsɪndʒər/',ja:'乗客',phrase:'How many passengers will there be?',phrasePh:'/haʊ ˈmeni ˈpæsɪndʒərz wɪl ðer biː/',phraseJa:'何名様でご乗車ですか？'},
     ],
     1:[
       {en:'Destination',ph:'/ˌdestɪˈneɪʃən/',ja:'目的地',phrase:'What is your final destination?',phrasePh:'/wɒt ɪz jɔːr ˈfaɪnəl ˌdestɪˈneɪʃən/',phraseJa:'最終目的地はどちらですか？'},
@@ -280,13 +309,62 @@ const DB={
       {en:'Keep the change',ph:'/kiːp ðə tʃeɪndʒ/',ja:'お釣りはいりません',phrase:'Please keep the change. Thank you.',phrasePh:'/pliːz kiːp ðə tʃeɪndʒ ˈθæŋk juː/',phraseJa:'お釣りはいりません。ありがとうございます。'},
       {en:'Credit card',ph:'/ˈkredɪt kɑːrd/',ja:'クレジットカード',phrase:'Do you accept credit cards?',phrasePh:'/duː juː əkˈsept ˈkredɪt kɑːrdz/',phraseJa:'クレジットカードは使えますか？'},
       {en:'Estimated arrival',ph:'/ˈestɪmeɪtɪd əˈraɪvəl/',ja:'到着予定',phrase:'The estimated arrival time is twenty minutes.',phrasePh:'/ðə ˈestɪmeɪtɪd əˈraɪvəl taɪm ɪz ˈtwenti ˈmɪnɪts/',phraseJa:'到着予定時刻は20分後です。'},
+      {en:'Road construction',ph:'/roʊd kənˈstrʌkʃən/',ja:'道路工事',phrase:'The road is closed due to construction.',phrasePh:'/ðə roʊd ɪz kloʊzd djuː tə kənˈstrʌkʃən/',phraseJa:'工事のため道路が封鎖されています。'},
+      {en:'One-way street',ph:'/wʌn weɪ striːt/',ja:'一方通行',phrase:'This is a one-way street. I must go around.',phrasePh:'/ðɪs ɪz ə wʌn weɪ striːt/',phraseJa:'ここは一方通行です。回り道をしなければなりません。'},
+      {en:'Parking',ph:'/ˈpɑːrkɪŋ/',ja:'駐車',phrase:'There is no parking allowed here.',phrasePh:'/ðer ɪz noʊ ˈpɑːrkɪŋ əˈlaʊd hɪr/',phraseJa:'ここは駐車禁止です。'},
+      {en:'Wait here',ph:'/weɪt hɪr/',ja:'ここで待つ',phrase:'Could you wait here for a moment?',phrasePh:'/kʊd juː weɪt hɪr fɔːr ə ˈmoʊmənt/',phraseJa:'少しここでお待ちいただけますか？'},
+      {en:'Rush hour',ph:'/rʌʃ ˈaʊər/',ja:'ラッシュアワー',phrase:'It is rush hour so traffic may be slow.',phrasePh:'/ɪt ɪz rʌʃ ˈaʊər soʊ ˈtræfɪk meɪ biː sloʊ/',phraseJa:'ラッシュアワーなので渋滞するかもしれません。'},
+      {en:'Toll',ph:'/toʊl/',ja:'通行料',phrase:'There will be a highway toll of three hundred yen.',phrasePh:'/ðer wɪl biː ə ˈhaɪweɪ toʊl əv θriː ˈhʌndrəd jen/',phraseJa:'高速料金が300円かかります。'},
+      {en:'Navigation',ph:'/ˌnævɪˈɡeɪʃən/',ja:'ナビ',phrase:'Let me set the navigation for you.',phrasePh:'/let miː set ðə ˌnævɪˈɡeɪʃən fɔːr juː/',phraseJa:'ナビをセットします。'},
+      {en:'Advance booking',ph:'/ədˈvɑːns ˈbʊkɪŋ/',ja:'事前予約',phrase:'Did you make an advance booking?',phrasePh:'/dɪd juː meɪk ən ədˈvɑːns ˈbʊkɪŋ/',phraseJa:'事前にご予約はされていましたか？'},
+      {en:'Both ways',ph:'/boʊθ weɪz/',ja:'往復',phrase:'Do you need a ride both ways?',phrasePh:'/duː juː niːd ə raɪd boʊθ weɪz/',phraseJa:'往復でご利用になりますか？'},
+      {en:'Stop sign',ph:'/stɒp saɪn/',ja:'一時停止標識',phrase:'I must stop at the stop sign.',phrasePh:'/aɪ mʌst stɒp æt ðə stɒp saɪn/',phraseJa:'一時停止標識で止まらなければなりません。'},
+      {en:'Speed limit',ph:'/spiːd ˈlɪmɪt/',ja:'制限速度',phrase:'The speed limit here is forty kilometers.',phrasePh:'/ðə spiːd ˈlɪmɪt hɪr ɪz ˈfɔːrti ˌkɪləˈmiːtərz/',phraseJa:'ここの制限速度は時速40キロです。'},
+      {en:'Lost and found',ph:'/lɒst ænd faʊnd/',ja:'落とし物',phrase:'I will take your lost item to the lost and found.',phrasePh:'/aɪ wɪl teɪk jɔːr lɒst ˈaɪtəm tə ðə lɒst ænd faʊnd/',phraseJa:'お忘れ物を遺失物係に届けます。'},
+      {en:'Complaint',ph:'/kəmˈpleɪnt/',ja:'苦情・クレーム',phrase:'If you have a complaint, please contact us.',phrasePh:'/ɪf juː hæv ə kəmˈpleɪnt pliːz ˈkɒntækt ʌs/',phraseJa:'ご不満がございましたら、ご連絡ください。'},
+      {en:'Wheelchair',ph:'/ˈwiːltʃer/',ja:'車椅子',phrase:'This taxi can accommodate a wheelchair.',phrasePh:'/ðɪs ˈtæksi kæn əˈkɒmədeɪt ə ˈwiːltʃer/',phraseJa:'このタクシーは車椅子に対応しています。'},
+      {en:'Bypass',ph:'/ˈbaɪpæs/',ja:'バイパス',phrase:'We can take the bypass to avoid traffic.',phrasePh:'/wiː kæn teɪk ðə ˈbaɪpæs tə əˈvɔɪd ˈtræfɪk/',phraseJa:'渋滞を避けてバイパスを使えます。'},
+      {en:'Flat rate',ph:'/flæt reɪt/',ja:'定額料金',phrase:'The flat rate to the airport is five thousand yen.',phrasePh:'/ðə flæt reɪt tə ðə ˈerpɔːrt ɪz faɪv ˈθaʊzənd jen/',phraseJa:'空港までの定額料金は5,000円です。'},
+      {en:'Pick up',ph:'/pɪk ʌp/',ja:'迎えに行く',phrase:'I will pick you up at the hotel entrance.',phrasePh:'/aɪ wɪl pɪk juː ʌp æt ðə hoʊˈtel ˈentrəns/',phraseJa:'ホテルの入口にお迎えに上がります。'},
+      {en:'Shared taxi',ph:'/ʃerd ˈtæksi/',ja:'相乗りタクシー',phrase:'Would you like to try a shared taxi?',phrasePh:'/wʊd juː laɪk tə traɪ ə ʃerd ˈtæksi/',phraseJa:'相乗りタクシーはいかがですか？'},
+      {en:'Bridge',ph:'/brɪdʒ/',ja:'橋',phrase:'We will cross the bridge and then turn right.',phrasePh:'/wiː wɪl krɒs ðə brɪdʒ ænd ðen tɜːrn raɪt/',phraseJa:'橋を渡ったら右に曲がります。'},
+      {en:'Tunnel',ph:'/ˈtʌnəl/',ja:'トンネル',phrase:'We will go through a tunnel shortly.',phrasePh:'/wiː wɪl ɡoʊ θruː ə ˈtʌnəl ˈʃɔːrtli/',phraseJa:'もうすぐトンネルに入ります。'},
+      {en:'Signal',ph:'/ˈsɪɡnəl/',ja:'シグナル・信号',phrase:'The signal is green. We can go.',phrasePh:'/ðə ˈsɪɡnəl ɪz ɡriːn wiː kæn ɡoʊ/',phraseJa:'信号が青になりました。進めます。'},
+      {en:'Roundabout',ph:'/ˈraʊndəbaʊt/',ja:'ロータリー',phrase:'Go around the roundabout and take the third exit.',phrasePh:'/ɡoʊ əˈraʊnd ðə ˈraʊndəbaʊt ænd teɪk ðə θɜːrd ˈeksɪt/',phraseJa:'ロータリーを回って3番目の出口に進んでください。'},
+      {en:'Headlights',ph:'/ˈhedlaɪts/',ja:'ヘッドライト',phrase:'Let me turn on the headlights.',phrasePh:'/let miː tɜːrn ɒn ðə ˈhedlaɪts/',phraseJa:'ヘッドライトをつけます。'},
+      {en:'Rental car',ph:'/ˈrentəl kɑːr/',ja:'レンタカー',phrase:'Is there a rental car service nearby?',phrasePh:'/ɪz ðer ə ˈrentəl kɑːr ˈsɜːrvɪs ˈnɪərbaɪ/',phraseJa:'近くにレンタカーサービスはありますか？'},
+      {en:'Delay',ph:'/dɪˈleɪ/',ja:'遅延',phrase:'I apologize for the delay due to traffic.',phrasePh:'/aɪ əˈpɒlədʒaɪz fɔːr ðə dɪˈleɪ djuː tə ˈtræfɪk/',phraseJa:'交通渋滞による遅延をお詫び申し上げます。'},
+      {en:'Accident',ph:'/ˈæksɪdənt/',ja:'事故',phrase:'There was an accident ahead causing a delay.',phrasePh:'/ðer wɒz ən ˈæksɪdənt əˈhed ˈkɔːzɪŋ ə dɪˈleɪ/',phraseJa:'前方で事故があり遅延が発生しています。'},
+      {en:'Emergency',ph:'/ɪˈmɜːrdʒənsi/',ja:'緊急事態',phrase:'In case of emergency, please dial one one zero.',phrasePh:'/ɪn keɪs əv ɪˈmɜːrdʒənsi pliːz daɪəl wʌn wʌn zɪroʊ/',phraseJa:'緊急の場合は110番に電話してください。'},
+      {en:'Taxi stand',ph:'/ˈtæksi stænd/',ja:'タクシー乗り場',phrase:'The taxi stand is right in front of the station.',phrasePh:'/ðə ˈtæksi stænd ɪz raɪt ɪn frʌnt əv ðə ˈsteɪʃən/',phraseJa:'タクシー乗り場は駅の正面にあります。'},
     ],
     2:[
       {en:'Detour',ph:'/ˈdiːtʊr/',ja:'迂回路',phrase:"We'll need to take a detour due to road construction.",phrasePh:'/wiːl niːd tə teɪk ə ˈdiːtʊr/',phraseJa:'道路工事のため迂回が必要です。'},
       {en:'Surcharge',ph:'/ˈsɜːrtʃɑːrdʒ/',ja:'追加料金',phrase:'There is a late-night surcharge after eleven PM.',phrasePh:'/ðer ɪz ə leɪt naɪt ˈsɜːrtʃɑːrdʒ/',phraseJa:'夜11時以降は深夜割増料金がかかります。'},
       {en:'Navigation system',ph:'/ˌnævɪˈɡeɪʃən ˈsɪstəm/',ja:'カーナビ',phrase:'Let me check the navigation system for the best route.',phrasePh:'/let miː tʃek ðə ˌnævɪˈɡeɪʃən ˈsɪstəm/',phraseJa:'最良ルートをカーナビで確認します。'},
       {en:'Pull over',ph:'/pʊl ˈoʊvər/',ja:'路肩に止める',phrase:"I'll pull over here so you can get out safely.",phrasePh:'/aɪl pʊl ˈoʊvər hɪr/',phraseJa:'安全に降りられるよう、ここで路肩に止めます。'},
-      {en:'Fare meter',ph:'/fer ˈmiːtər/',ja:'メーター',phrase:'The fare meter starts at six hundred and eighty yen.',phrasePh:'/ðə fer ˈmiːtər stɑːrts æt sɪks ˈhʌndrəd/',phraseJa:'メーターは680円からスタートします。'},
+      {en:'Fare meter',ph:'/fer ˈmiːtər/',ja:'料金メーター',phrase:'The fare meter starts at six hundred and eighty yen.',phrasePh:'/ðə fer ˈmiːtər stɑːrts æt sɪks ˈhʌndrəd/',phraseJa:'メーターは680円からスタートします。'},
+      {en:'Congestion charge',ph:'/kənˈdʒestʃən tʃɑːrdʒ/',ja:'混雑料金',phrase:'A congestion charge applies in the city center.',phrasePh:'/ə kənˈdʒestʃən tʃɑːrdʒ əˈplaɪz ɪn ðə ˈsɪti ˈsentər/',phraseJa:'市内中心部では混雑料金が適用されます。'},
+      {en:'Dispatch',ph:'/dɪˈspætʃ/',ja:'配車',phrase:'Our dispatch center will send a car immediately.',phrasePh:'/aʊər dɪˈspætʃ ˈsentər wɪl send ə kɑːr ɪˈmiːdiətli/',phraseJa:'配車センターがすぐに車を手配します。'},
+      {en:'Designated driver',ph:'/ˈdezɪɡneɪtɪd ˈdraɪvər/',ja:'指定運転手',phrase:'I will be your designated driver tonight.',phrasePh:'/aɪ wɪl biː jɔːr ˈdezɪɡneɪtɪd ˈdraɪvər təˈnaɪt/',phraseJa:'今夜は私がお客様の専属ドライバーを務めます。'},
+      {en:'Handicap accessible',ph:'/ˈhændikæp əkˈsesɪbəl/',ja:'バリアフリー対応',phrase:'This vehicle is fully handicap accessible.',phrasePh:'/ðɪs ˈviːɪkəl ɪz ˈfʊli ˈhændikæp əkˈsesɪbəl/',phraseJa:'この車両は完全にバリアフリー対応です。'},
+      {en:'Airport limousine',ph:'/ˈerpɔːrt ˈlɪməziːn/',ja:'空港リムジン',phrase:'The airport limousine is faster than a regular taxi.',phrasePh:'/ðə ˈerpɔːrt ˈlɪməziːn ɪz ˈfɑːstər ðæn ə ˈreɡjələr ˈtæksi/',phraseJa:'空港リムジンは通常のタクシーより速いです。'},
+      {en:'Overcharge',ph:'/ˈoʊvərˌtʃɑːrdʒ/',ja:'過剰請求',phrase:'I assure you there will be no overcharge.',phrasePh:'/aɪ əˈʃʊr juː ðer wɪl biː noʊ ˈoʊvərˌtʃɑːrdʒ/',phraseJa:'過剰請求は一切ありません。ご安心ください。'},
+      {en:'Complimentary ride',ph:'/ˌkɒmplɪˈmentəri raɪd/',ja:'無料乗車',phrase:'This ride is complimentary. Enjoy your trip.',phrasePh:'/ðɪs raɪd ɪz ˌkɒmplɪˈmentəri/',phraseJa:'今回の乗車は無料サービスです。ご旅行をお楽しみください。'},
+      {en:'Ride-sharing',ph:'/raɪd ˈʃerɪŋ/',ja:'ライドシェア',phrase:'Have you tried ride-sharing apps like Uber?',phrasePh:'/hæv juː traɪd raɪd ˈʃerɪŋ æps laɪk ˈjuːbər/',phraseJa:'UberなどのライドシェアアプリをTested試されましたか？'},
+      {en:'Taxi license',ph:'/ˈtæksi ˈlaɪsəns/',ja:'タクシー免許',phrase:'I have held my taxi license for ten years.',phrasePh:'/aɪ hæv held maɪ ˈtæksi ˈlaɪsəns fɔːr ten jɪrz/',phraseJa:'タクシー免許を取得して10年になります。'},
+      {en:'Odometer',ph:'/oʊˈdɒmɪtər/',ja:'走行距離計',phrase:'The odometer shows the total distance traveled.',phrasePh:'/ðə oʊˈdɒmɪtər ʃoʊz ðə ˈtoʊtəl ˈdɪstəns ˈtrævəld/',phraseJa:'走行距離計が走行した総距離を表示します。'},
+      {en:'Premium taxi',ph:'/ˈpriːmiəm ˈtæksi/',ja:'プレミアムタクシー',phrase:'This is our premium taxi service with extra comfort.',phrasePh:'/ðɪs ɪz aʊər ˈpriːmiəm ˈtæksi ˈsɜːrvɪs/',phraseJa:'こちらは特別快適なプレミアムタクシーサービスです。'},
+      {en:'Fuel efficient',ph:'/fjuːəl ɪˈfɪʃənt/',ja:'燃費が良い',phrase:'This hybrid taxi is very fuel efficient.',phrasePh:'/ðɪs ˈhaɪbrɪd ˈtæksi ɪz ˈveri fjuːəl ɪˈfɪʃənt/',phraseJa:'このハイブリッドタクシーは非常に燃費が良いです。'},
+      {en:'Customer satisfaction',ph:'/ˈkʌstəmər ˌsætɪsˈfækʃən/',ja:'顧客満足',phrase:'Your customer satisfaction is our top priority.',phrasePh:'/jɔːr ˈkʌstəmər ˌsætɪsˈfækʃən ɪz aʊər tɒp praɪˈɒrɪti/',phraseJa:'お客様のご満足が私どもの最優先事項です。'},
+      {en:'Road closure',ph:'/roʊd ˈkloʊʒər/',ja:'道路封鎖',phrase:'The main road is closed. I will find another way.',phrasePh:'/ðə meɪn roʊd ɪz kloʊzd aɪ wɪl faɪnd əˈnʌðər weɪ/',phraseJa:'メイン道路が封鎖されています。別ルートを探します。'},
+      {en:'Estimated fare',ph:'/ˈestɪmeɪtɪd fer/',ja:'概算料金',phrase:'The estimated fare to downtown is around two thousand yen.',phrasePh:'/ðə ˈestɪmeɪtɪd fer tə ˈdaʊntaʊn/',phraseJa:'市内中心部までの概算料金は2,000円程度です。'},
+      {en:'Traffic report',ph:'/ˈtræfɪk rɪˈpɔːrt/',ja:'交通情報',phrase:'I just checked the traffic report. It looks clear ahead.',phrasePh:'/aɪ dʒʌst tʃekt ðə ˈtræfɪk rɪˈpɔːrt/',phraseJa:'交通情報を確認しました。この先は空いているようです。'},
+      {en:'Cab fare',ph:'/kæb fer/',ja:'タクシー料金',phrase:'The cab fare will depend on the route and distance.',phrasePh:'/ðə kæb fer wɪl dɪˈpend ɒn ðə ruːt ænd ˈdɪstəns/',phraseJa:'タクシー料金はルートと距離によって異なります。'},
+      {en:'Meter rate',ph:'/ˈmiːtər reɪt/',ja:'メーター料金',phrase:'The meter rate increases every two hundred and fifty meters.',phrasePh:'/ðə ˈmiːtər reɪt ɪnˈkriːsɪz ˈevri tuː ˈhʌndrəd/',phraseJa:'メーター料金は250メートルごとに上がります。'},
+      {en:'Hail a taxi',ph:'/heɪl ə ˈtæksi/',ja:'タクシーを止める',phrase:'You can hail a taxi on the main street.',phrasePh:'/juː kæn heɪl ə ˈtæksi ɒn ðə meɪn striːt/',phraseJa:'メインストリートでタクシーを止められます。'},
+      {en:'Professional driver',ph:'/prəˈfeʃənəl ˈdraɪvər/',ja:'プロドライバー',phrase:'I am a professional driver with fifteen years of experience.',phrasePh:'/aɪ æm ə prəˈfeʃənəl ˈdraɪvər/',phraseJa:'15年のキャリアを持つプロドライバーです。'},
+      {en:'Scenic drive',ph:'/ˈsiːnɪk draɪv/',ja:'景観ドライブ',phrase:'Would you like to take the scenic drive along the coast?',phrasePh:'/wʊd juː laɪk tə teɪk ðə ˈsiːnɪk draɪv/',phraseJa:'海岸沿いの景観ドライブルートはいかがですか？'},
     ],
   },
   '日常会話':{
@@ -297,6 +375,30 @@ const DB={
       {en:'No problem',ph:'/noʊ ˈprɒbləm/',ja:'大丈夫です',phrase:'No problem at all. Happy to help.',phrasePh:'/noʊ ˈprɒbləm æt ɔːl/',phraseJa:'全然大丈夫です。喜んでお手伝いします。'},
       {en:'Just a moment',ph:'/dʒʌst ə ˈmoʊmənt/',ja:'少々お待ちください',phrase:'Just a moment, please. I will check for you.',phrasePh:'/dʒʌst ə ˈmoʊmənt pliːz/',phraseJa:'少々お待ちください。確認します。'},
       {en:'I would like',ph:'/aɪ wʊd laɪk/',ja:'〜をください',phrase:'I would like a coffee, please.',phrasePh:'/aɪ wʊd laɪk ə ˈkɒfi pliːz/',phraseJa:'コーヒーをください。'},
+      {en:'Do you speak English?',ph:'/duː juː spiːk ˈɪŋɡlɪʃ/',ja:'英語は話せますか？',phrase:'Do you speak English? My Japanese is limited.',phrasePh:'/duː juː spiːk ˈɪŋɡlɪʃ maɪ dʒæpəˈniːz ɪz ˈlɪmɪtɪd/',phraseJa:'英語は話せますか？私の日本語は限られています。'},
+      {en:'I understand',ph:'/aɪ ˌʌndərˈstænd/',ja:'わかりました',phrase:'I understand. I will do that right away.',phrasePh:'/aɪ ˌʌndərˈstænd aɪ wɪl duː ðæt raɪt əˈweɪ/',phraseJa:'わかりました。すぐにそうします。'},
+      {en:'I do not understand',ph:'/aɪ duː nɒt ˌʌndərˈstænd/',ja:'わかりません',phrase:'I am sorry. I do not understand. Could you repeat?',phrasePh:'/aɪ æm ˈsɒri aɪ duː nɒt ˌʌndərˈstænd/',phraseJa:'申し訳ありません。わかりません。もう一度言っていただけますか？'},
+      {en:'Please speak slowly',ph:'/pliːz spiːk ˈsloʊli/',ja:'ゆっくり話してください',phrase:'Could you please speak more slowly?',phrasePh:'/kʊd juː pliːz spiːk mɔːr ˈsloʊli/',phraseJa:'もう少しゆっくり話していただけますか？'},
+      {en:'Good morning',ph:'/ɡʊd ˈmɔːrnɪŋ/',ja:'おはようございます',phrase:'Good morning! How are you today?',phrasePh:'/ɡʊd ˈmɔːrnɪŋ haʊ ɑːr juː təˈdeɪ/',phraseJa:'おはようございます！今日はいかがですか？'},
+      {en:'Good evening',ph:'/ɡʊd ˈiːvnɪŋ/',ja:'こんばんは',phrase:'Good evening. Welcome to Sapporo.',phrasePh:'/ɡʊd ˈiːvnɪŋ ˈwelkəm tə ˌsæpɔːroʊ/',phraseJa:'こんばんは。札幌へようこそ。'},
+      {en:'See you later',ph:'/siː juː ˈleɪtər/',ja:'またお会いしましょう',phrase:'See you later. Have a safe trip!',phrasePh:'/siː juː ˈleɪtər hæv ə seɪf trɪp/',phraseJa:'またお会いしましょう。安全なご旅行を！'},
+      {en:'Please',ph:'/pliːz/',ja:'どうぞ・お願いします',phrase:'Please feel free to ask if you need anything.',phrasePh:'/pliːz fiːl friː tə ɑːsk ɪf juː niːd ˈeniθɪŋ/',phraseJa:'何かあればお気軽にお申し付けください。'},
+      {en:'Sorry',ph:'/ˈsɒri/',ja:'すみません・申し訳ありません',phrase:'I am sorry for any inconvenience.',phrasePh:'/aɪ æm ˈsɒri fɔːr ˈeni ɪnkənˈviːniəns/',phraseJa:'ご不便をおかけして申し訳ありません。'},
+      {en:'Of course',ph:'/əv kɔːrs/',ja:'もちろんです',phrase:'Of course. I am happy to help you.',phrasePh:'/əv kɔːrs aɪ æm ˈhæpi tə help juː/',phraseJa:'もちろんです。喜んでお手伝いします。'},
+      {en:'Right away',ph:'/raɪt əˈweɪ/',ja:'すぐに',phrase:'I will take care of that right away.',phrasePh:'/aɪ wɪl teɪk ker əv ðæt raɪt əˈweɪ/',phraseJa:'すぐに対応します。'},
+      {en:'Help',ph:'/help/',ja:'助けてください・手伝う',phrase:'Is there anything I can help you with?',phrasePh:'/ɪz ðer ˈeniθɪŋ aɪ kæn help juː wɪð/',phraseJa:'何かお手伝いできることはありますか？'},
+      {en:'Directions',ph:'/dɪˈrekʃənz/',ja:'道案内',phrase:'Could you give me directions to the park?',phrasePh:'/kʊd juː ɡɪv miː dɪˈrekʃənz tə ðə pɑːrk/',phraseJa:'公園への道を教えていただけますか？'},
+      {en:'Near here',ph:'/nɪr hɪr/',ja:'この近く',phrase:'Is there a convenience store near here?',phrasePh:'/ɪz ðer ə kənˈviːniəns stɔːr nɪr hɪr/',phraseJa:'この近くにコンビニはありますか？'},
+      {en:'Pharmacy',ph:'/ˈfɑːrməsi/',ja:'薬局',phrase:'I need to find a pharmacy nearby.',phrasePh:'/aɪ niːd tə faɪnd ə ˈfɑːrməsi ˈnɪərbaɪ/',phraseJa:'近くの薬局を探しています。'},
+      {en:'Hospital',ph:'/ˈhɒspɪtəl/',ja:'病院',phrase:'Please take me to the nearest hospital.',phrasePh:'/pliːz teɪk miː tə ðə ˈnɪərɪst ˈhɒspɪtəl/',phraseJa:'最寄りの病院まで連れて行ってください。'},
+      {en:'Police',ph:'/pəˈliːs/',ja:'警察',phrase:'Please call the police. There was an accident.',phrasePh:'/pliːz kɔːl ðə pəˈliːs ðer wɒz ən ˈæksɪdənt/',phraseJa:'警察を呼んでください。事故がありました。'},
+      {en:'I am lost',ph:'/aɪ æm lɒst/',ja:'迷子になりました',phrase:'I am lost. Can you help me find my hotel?',phrasePh:'/aɪ æm lɒst kæn juː help miː faɪnd maɪ hoʊˈtel/',phraseJa:'迷子になりました。ホテルを探すのを手伝っていただけますか？'},
+      {en:'Not far',ph:'/nɒt fɑːr/',ja:'遠くない',phrase:"It is not far from here. Just two minutes by taxi.",phrasePh:'/ɪt ɪz nɒt fɑːr frəm hɪr/',phraseJa:'ここから遠くありません。タクシーで2分です。'},
+      {en:'Weather',ph:'/ˈweðər/',ja:'天気',phrase:'The weather today is very cold in Sapporo.',phrasePh:'/ðə ˈweðər təˈdeɪ ɪz ˈveri koʊld ɪn ˌsæpɔːroʊ/',phraseJa:'今日の札幌はとても寒いですね。'},
+      {en:'Enjoy your stay',ph:'/ɪnˈdʒɔɪ jɔːr steɪ/',ja:'滞在をお楽しみください',phrase:'I hope you enjoy your stay in Hokkaido.',phrasePh:'/aɪ hoʊp juː ɪnˈdʒɔɪ jɔːr steɪ ɪn ˌhɒkaɪdoʊ/',phraseJa:'北海道でのご滞在をお楽しみください。'},
+      {en:'Welcome to Japan',ph:'/ˈwelkəm tə dʒəˈpæn/',ja:'日本へようこそ',phrase:'Welcome to Japan! I hope you have a wonderful time.',phrasePh:'/ˈwelkəm tə dʒəˈpæn aɪ hoʊp juː hæv ə ˈwʌndərfəl taɪm/',phraseJa:'日本へようこそ！素晴らしい時間をお過ごしください。'},
+      {en:'Convenience store',ph:'/kənˈviːniəns stɔːr/',ja:'コンビニ',phrase:'There is a convenience store on the next block.',phrasePh:'/ðer ɪz ə kənˈviːniəns stɔːr ɒn ðə nekst blɒk/',phraseJa:'次のブロックにコンビニがあります。'},
+      {en:'Coin locker',ph:'/kɔɪn ˈlɒkər/',ja:'コインロッカー',phrase:'You can find coin lockers near the station.',phrasePh:'/juː kæn faɪnd kɔɪn ˈlɒkərz nɪr ðə ˈsteɪʃən/',phraseJa:'駅の近くにコインロッカーがあります。'},
     ],
     1:[
       {en:'Do you have',ph:'/duː juː hæv/',ja:'〜はありますか？',phrase:'Do you have a menu in English?',phrasePh:'/duː juː hæv ə ˈmenjuː ɪn ˈɪŋɡlɪʃ/',phraseJa:'英語のメニューはありますか？'},
@@ -305,11 +407,42 @@ const DB={
       {en:'Allergic to',ph:'/əˈlɜːrdʒɪk tuː/',ja:'〜アレルギー',phrase:'I am allergic to shellfish and nuts.',phrasePh:'/aɪ æm əˈlɜːrdʒɪk tə ˈʃelfɪʃ/',phraseJa:'私は貝類とナッツのアレルギーがあります。'},
       {en:'Out of stock',ph:'/aʊt əv stɒk/',ja:'在庫切れ',phrase:'Sorry, that item is out of stock right now.',phrasePh:'/ˈsɒri ðæt ˈaɪtəm ɪz aʊt əv stɒk/',phraseJa:'申し訳ありません、その商品は現在在庫切れです。'},
       {en:'Refund',ph:'/ˈriːfʌnd/',ja:'返金',phrase:'I would like a refund for this item, please.',phrasePh:'/aɪ wʊd laɪk ə ˈriːfʌnd fɔːr ðɪs ˈaɪtəm/',phraseJa:'この商品を返金していただきたいのですが。'},
+      {en:'Discount',ph:'/ˈdɪskaʊnt/',ja:'割引',phrase:'Is there any discount for group bookings?',phrasePh:'/ɪz ðer ˈeni ˈdɪskaʊnt fɔːr ɡruːp ˈbʊkɪŋz/',phraseJa:'グループ予約の割引はありますか？'},
+      {en:'Tax included',ph:'/tæks ɪnˈkluːdɪd/',ja:'税込み',phrase:'The price shown is tax included.',phrasePh:'/ðə praɪs ʃoʊn ɪz tæks ɪnˈkluːdɪd/',phraseJa:'表示価格は税込みです。'},
+      {en:'Reservation',ph:'/ˌrezərˈveɪʃən/',ja:'予約',phrase:'I have a reservation under the name Smith.',phrasePh:'/aɪ hæv ə ˌrezərˈveɪʃən ˈʌndər ðə neɪm smɪθ/',phraseJa:'スミスという名前で予約があります。'},
+      {en:'Wi-Fi',ph:'/ˈwaɪfaɪ/',ja:'ワイファイ',phrase:'Is there free Wi-Fi available here?',phrasePh:'/ɪz ðer friː ˈwaɪfaɪ əˈveɪləbəl hɪr/',phraseJa:'ここで無料Wi-Fiは使えますか？'},
+      {en:'ATM',ph:'/eɪ tiː em/',ja:'ATM・現金機',phrase:'Is there an ATM near here?',phrasePh:'/ɪz ðer ən eɪ tiː em nɪr hɪr/',phraseJa:'この近くにATMはありますか？'},
+      {en:'Exchange rate',ph:'/ɪksˈtʃeɪndʒ reɪt/',ja:'為替レート',phrase:'What is the current exchange rate for dollars?',phrasePh:'/wɒt ɪz ðə ˈkɜːrənt ɪksˈtʃeɪndʒ reɪt fɔːr ˈdɒlərz/',phraseJa:'現在のドルの為替レートはいくらですか？'},
+      {en:'Foreign currency',ph:'/ˈfɒrən ˈkɜːrənsi/',ja:'外貨',phrase:'Where can I exchange foreign currency?',phrasePh:'/wer kæn aɪ ɪksˈtʃeɪndʒ ˈfɒrən ˈkɜːrənsi/',phraseJa:'外貨を両替できる場所はどこですか？'},
+      {en:'Business hours',ph:'/ˈbɪznəs ˈaʊərz/',ja:'営業時間',phrase:'What are the business hours of this shop?',phrasePh:'/wɒt ɑːr ðə ˈbɪznəs ˈaʊərz əv ðɪs ʃɒp/',phraseJa:'このお店の営業時間は何時ですか？'},
+      {en:'Closed',ph:'/kloʊzd/',ja:'閉店',phrase:'I am sorry, we are closed today.',phrasePh:'/aɪ æm ˈsɒri wiː ɑːr kloʊzd təˈdeɪ/',phraseJa:'申し訳ありませんが、本日は閉店しております。'},
+      {en:'Open',ph:'/ˈoʊpən/',ja:'開店・営業中',phrase:'We are open every day from nine to nine.',phrasePh:'/wiː ɑːr ˈoʊpən ˈevri deɪ frəm naɪn tə naɪn/',phraseJa:'毎日9時から21時まで営業しています。'},
+      {en:'Tourist information',ph:'/ˈtʊərɪst ˌɪnfəˈmeɪʃən/',ja:'観光案内所',phrase:'The tourist information center is near the station.',phrasePh:'/ðə ˈtʊərɪst ˌɪnfəˈmeɪʃən ˈsentər ɪz nɪr ðə ˈsteɪʃən/',phraseJa:'観光案内所は駅の近くにあります。'},
+      {en:'Free shuttle',ph:'/friː ˈʃʌtəl/',ja:'無料シャトル',phrase:'There is a free shuttle bus to the hotel.',phrasePh:'/ðer ɪz ə friː ˈʃʌtəl bʌs tə ðə hoʊˈtel/',phraseJa:'ホテルへの無料シャトルバスがあります。'},
+      {en:'Public transport',ph:'/ˈpʌblɪk ˈtrænspɔːrt/',ja:'公共交通機関',phrase:'Public transport in Sapporo is very convenient.',phrasePh:'/ˈpʌblɪk ˈtrænspɔːrt ɪn ˌsæpɔːroʊ ɪz ˈveri kənˈviːniənt/',phraseJa:'札幌の公共交通機関はとても便利です。'},
+      {en:'Subway',ph:'/ˈsʌbweɪ/',ja:'地下鉄',phrase:'The subway is the fastest way to get downtown.',phrasePh:'/ðə ˈsʌbweɪ ɪz ðə ˈfɑːstɪst weɪ tə ɡet ˈdaʊntaʊn/',phraseJa:'地下鉄が市内中心部への最速手段です。'},
+      {en:'Bus stop',ph:'/bʌs stɒp/',ja:'バス停',phrase:'The bus stop is just around the corner.',phrasePh:'/ðə bʌs stɒp ɪz dʒʌst əˈraʊnd ðə ˈkɔːrnər/',phraseJa:'バス停はすぐそこを曲がったところにあります。'},
+      {en:'Transfer',ph:'/ˈtrænsfɜːr/',ja:'乗り換え',phrase:'You need to transfer at Odori Station.',phrasePh:'/juː niːd tə ˈtrænsfɜːr æt ˈoʊdɔːri ˈsteɪʃən/',phraseJa:'大通駅で乗り換えが必要です。'},
+      {en:'IC card',ph:'/aɪ siː kɑːrd/',ja:'交通系ICカード',phrase:'You can use an IC card for buses and trains.',phrasePh:'/juː kæn juːz ən aɪ siː kɑːrd fɔːr ˈbʌsɪz ænd treɪnz/',phraseJa:'バスや電車ではICカードが使えます。'},
+      {en:'First train',ph:'/fɜːrst treɪn/',ja:'始発電車',phrase:'The first train leaves at five thirty AM.',phrasePh:'/ðə fɜːrst treɪn liːvz æt faɪv ˈθɜːrti eɪˈem/',phraseJa:'始発電車は午前5時30分発です。'},
+      {en:'Last train',ph:'/lɑːst treɪn/',ja:'終電',phrase:'The last train leaves at midnight.',phrasePh:'/ðə lɑːst treɪn liːvz æt ˈmɪdnaɪt/',phraseJa:'終電は真夜中に出発します。'},
     ],
     2:[
       {en:'Complimentary',ph:'/ˌkɒmplɪˈmentəri/',ja:'無料サービスの',phrase:'This dessert is complimentary from the chef.',phrasePh:'/ðɪs dɪˈzɜːrt ɪz ˌkɒmplɪˈmentəri/',phraseJa:'このデザートはシェフからのサービスです。'},
       {en:'Split the bill',ph:'/splɪt ðə bɪl/',ja:'割り勘',phrase:'Could we split the bill evenly?',phrasePh:'/kʊd wiː splɪt ðə bɪl ˈiːvənli/',phraseJa:'割り勘にしていただけますか？'},
       {en:'Dietary restriction',ph:'/ˈdaɪətəri rɪˈstrɪkʃən/',ja:'食事制限',phrase:'Do you have any dietary restrictions I should know about?',phrasePh:'/duː juː hæv ˈeni ˈdaɪətəri rɪˈstrɪkʃənz/',phraseJa:'何か食事制限はございますか？'},
+      {en:'Vegan',ph:'/ˈviːɡən/',ja:'完全菜食主義者',phrase:'Do you have any vegan options on the menu?',phrasePh:'/duː juː hæv ˈeni ˈviːɡən ˈɒpʃənz ɒn ðə ˈmenjuː/',phraseJa:'メニューにビーガン対応の料理はありますか？'},
+      {en:'Halal',ph:'/həˈlɑːl/',ja:'ハラール',phrase:'Do you serve halal food here?',phrasePh:'/duː juː sɜːrv həˈlɑːl fuːd hɪr/',phraseJa:'こちらではハラール料理を提供していますか？'},
+      {en:'Cultural difference',ph:'/ˈkʌltʃərəl ˈdɪfrəns/',ja:'文化の違い',phrase:'Japan has many interesting cultural differences.',phrasePh:'/dʒəˈpæn hæz ˈmeni ˈɪntrɪstɪŋ ˈkʌltʃərəl ˈdɪfrənsɪz/',phraseJa:'日本には多くの興味深い文化の違いがあります。'},
+      {en:'Seasonal',ph:'/ˈsiːzənəl/',ja:'季節の',phrase:'Hokkaido has beautiful seasonal attractions.',phrasePh:'/ˌhɒkaɪdoʊ hæz ˈbjuːtɪfəl ˈsiːzənəl əˈtrækʃənz/',phraseJa:'北海道には美しい季節の見どころがあります。'},
+      {en:'Traditional',ph:'/trəˈdɪʃənəl/',ja:'伝統的な',phrase:'Would you like to try some traditional Japanese food?',phrasePh:'/wʊd juː laɪk tə traɪ sʌm trəˈdɪʃənəl dʒæpəˈniːz fuːd/',phraseJa:'伝統的な日本食を試してみますか？'},
+      {en:'Local specialty',ph:'/ˈloʊkəl ˈspeʃəlti/',ja:'地域の特産品',phrase:'Sapporo ramen is a famous local specialty.',phrasePh:'/ˌsæpɔːroʊ ˈrɑːmən ɪz ə ˈfeɪməs ˈloʊkəl ˈspeʃəlti/',phraseJa:'札幌ラーメンは有名な地元の名物です。'},
+      {en:'Bargain',ph:'/ˈbɑːrɡɪn/',ja:'お買い得',phrase:'That is a real bargain. You should buy it.',phrasePh:'/ðæt ɪz ə rɪəl ˈbɑːrɡɪn juː ʃʊd baɪ ɪt/',phraseJa:'それは本当にお買い得です。買うべきですよ。'},
+      {en:'Duty free',ph:'/ˈdjuːti friː/',ja:'免税',phrase:'You can buy duty free items at the airport.',phrasePh:'/juː kæn baɪ ˈdjuːti friː ˈaɪtəmz æt ðə ˈerpɔːrt/',phraseJa:'空港で免税品を購入できます。'},
+      {en:'Souvenir shop',ph:'/ˌsuːvəˈnɪər ʃɒp/',ja:'お土産店',phrase:'The souvenir shop closes at eight PM.',phrasePh:'/ðə ˌsuːvəˈnɪər ʃɒp kloʊzɪz æt eɪt piːˈem/',phraseJa:'お土産店は午後8時に閉まります。'},
+      {en:'Cash register',ph:'/kæʃ ˈredʒɪstər/',ja:'レジ',phrase:'Please pay at the cash register over there.',phrasePh:'/pliːz peɪ æt ðə kæʃ ˈredʒɪstər ˈoʊvər ðer/',phraseJa:'あちらのレジでお支払いください。'},
+      {en:'Gift wrapping',ph:'/ɡɪft ˈræpɪŋ/',ja:'ギフト包装',phrase:'Would you like gift wrapping for this?',phrasePh:'/wʊd juː laɪk ɡɪft ˈræpɪŋ fɔːr ðɪs/',phraseJa:'ギフト包装はご希望ですか？'},
+      {en:'Membership card',ph:'/ˈmembərʃɪp kɑːrd/',ja:'会員カード',phrase:'Do you have a membership card with us?',phrasePh:'/duː juː hæv ə ˈmembərʃɪp kɑːrd wɪð ʌs/',phraseJa:'当店の会員カードをお持ちですか？'},
     ],
   },
   '旅行・観光':{
@@ -320,6 +453,31 @@ const DB={
       {en:'Famous for',ph:'/ˈfeɪməs fɔːr/',ja:'〜で有名',phrase:'Sapporo is famous for its snow festival.',phrasePh:'/ˈsæpɔːroʊ ɪz ˈfeɪməs fɔːr ɪts snoʊ ˈfestɪvəl/',phraseJa:'札幌は雪まつりで有名です。'},
       {en:'Must-see',ph:'/mʌst siː/',ja:'必見の',phrase:'What is the must-see attraction in Hokkaido?',phrasePh:'/wɒt ɪz ðə mʌst siː əˈtrækʃən/',phraseJa:'北海道で必見の観光地はどこですか？'},
       {en:'How far is it?',ph:'/haʊ fɑːr ɪz ɪt/',ja:'どのくらいの距離ですか？',phrase:'How far is it from here to the airport?',phrasePh:'/haʊ fɑːr ɪz ɪt frəm hɪr tə ðə ˈerpɔːrt/',phraseJa:'ここから空港までどのくらいかかりますか？'},
+      {en:'Hokkaido',ph:'/hɒˈkaɪdoʊ/',ja:'北海道',phrase:'Hokkaido is beautiful in every season.',phrasePh:'/hɒˈkaɪdoʊ ɪz ˈbjuːtɪfəl ɪn ˈevri ˈsiːzən/',phraseJa:'北海道はどの季節も美しいです。'},
+      {en:'Snow festival',ph:'/snoʊ ˈfestɪvəl/',ja:'雪まつり',phrase:'The Sapporo Snow Festival is held every February.',phrasePh:'/ðə ˌsæpɔːroʊ snoʊ ˈfestɪvəl ɪz held ˈevri ˈfebrueri/',phraseJa:'札幌雪まつりは毎年2月に開催されます。'},
+      {en:'Hot spring',ph:'/hɒt sprɪŋ/',ja:'温泉',phrase:'Hokkaido has many wonderful hot springs.',phrasePh:'/hɒˈkaɪdoʊ hæz ˈmeni ˈwʌndərfəl hɒt sprɪŋz/',phraseJa:'北海道には素晴らしい温泉がたくさんあります。'},
+      {en:'Seafood',ph:'/ˈsiːfuːd/',ja:'海産物・シーフード',phrase:'Hokkaido is famous for fresh seafood.',phrasePh:'/hɒˈkaɪdoʊ ɪz ˈfeɪməs fɔːr freʃ ˈsiːfuːd/',phraseJa:'北海道は新鮮な海産物で有名です。'},
+      {en:'Ramen',ph:'/ˈrɑːmən/',ja:'ラーメン',phrase:'You must try Sapporo miso ramen.',phrasePh:'/juː mʌst traɪ ˌsæpɔːroʊ ˈmiːsoʊ ˈrɑːmən/',phraseJa:'札幌の味噌ラーメンは絶対に食べるべきです。'},
+      {en:'Beer garden',ph:'/bɪr ˈɡɑːrdən/',ja:'ビアガーデン',phrase:'The Sapporo Beer Garden is very popular.',phrasePh:'/ðə ˌsæpɔːroʊ bɪr ˈɡɑːrdən ɪz ˈveri ˈpɒpjələr/',phraseJa:'サッポロビール園はとても人気があります。'},
+      {en:'Clock tower',ph:'/klɒk ˈtaʊər/',ja:'時計台',phrase:'The Sapporo Clock Tower is a historic landmark.',phrasePh:'/ðə ˌsæpɔːroʊ klɒk ˈtaʊər ɪz ə hɪˈstɒrɪk ˈlændmɑːrk/',phraseJa:'札幌時計台は歴史的なランドマークです。'},
+      {en:'Odori Park',ph:'/ˈoʊdɔːri pɑːrk/',ja:'大通公園',phrase:'Odori Park is in the heart of Sapporo.',phrasePh:'/ˈoʊdɔːri pɑːrk ɪz ɪn ðə hɑːrt əv ˌsæpɔːroʊ/',phraseJa:'大通公園は札幌の中心にあります。'},
+      {en:'Tanuki Koji',ph:'/tɑːnʊki ˈkoʊdʒi/',ja:'狸小路',phrase:'Tanuki Koji is a famous shopping arcade.',phrasePh:'/tɑːnʊki ˈkoʊdʒi ɪz ə ˈfeɪməs ˈʃɒpɪŋ ɑːrˈkeɪd/',phraseJa:'狸小路は有名なショッピングアーケードです。'},
+      {en:'Susukino',ph:'/suːsuːkiːnoʊ/',ja:'すすきの',phrase:'Susukino is Sapporo\'s entertainment district.',phrasePh:'/suːsuːkiːnoʊ ɪz ˌsæpɔːroʊz ˌentərˈteɪnmənt ˈdɪstrɪkt/',phraseJa:'すすきのは札幌の歓楽街です。'},
+      {en:'Mt. Moiwa',ph:'/maʊnt moɪwɑː/',ja:'藻岩山',phrase:'Mt. Moiwa offers a wonderful night view of Sapporo.',phrasePh:'/maʊnt moɪwɑː ˈɒfərz ə ˈwʌndərfəl naɪt vjuː/',phraseJa:'藻岩山から札幌の素晴らしい夜景が見えます。'},
+      {en:'Maruyama Zoo',ph:'/mɑːruːjɑːmɑː zuː/',ja:'円山動物園',phrase:'Maruyama Zoo is popular with families.',phrasePh:'/mɑːruːjɑːmɑː zuː ɪz ˈpɒpjələr wɪð ˈfæmɪlɪz/',phraseJa:'円山動物園は家族連れに人気です。'},
+      {en:'Sapporo TV Tower',ph:'/ˌsæpɔːroʊ tiː viː ˈtaʊər/',ja:'さっぽろテレビ塔',phrase:'The Sapporo TV Tower has an observation deck.',phrasePh:'/ðə ˌsæpɔːroʊ tiː viː ˈtaʊər hæz ən ˌɒbzərˈveɪʃən dek/',phraseJa:'さっぽろテレビ塔には展望台があります。'},
+      {en:'Former Hokkaido Government Office',ph:'/ˈfɔːrmər hɒˈkaɪdoʊ ˈɡʌvərnmənt ˈɒfɪs/',ja:'北海道庁旧本庁舎（赤れんが）',phrase:'The red brick building is a symbol of Hokkaido.',phrasePh:'/ðə red brɪk ˈbɪldɪŋ ɪz ə ˈsɪmbəl əv hɒˈkaɪdoʊ/',phraseJa:'赤れんが庁舎は北海道のシンボルです。'},
+      {en:'Ski resort',ph:'/skiː rɪˈzɔːrt/',ja:'スキーリゾート',phrase:'Niseko is a world-famous ski resort.',phrasePh:'/niːseɪkoʊ ɪz ə ˈwɜːrld ˈfeɪməs skiː rɪˈzɔːrt/',phraseJa:'ニセコは世界的に有名なスキーリゾートです。'},
+      {en:'National park',ph:'/ˈnæʃənəl pɑːrk/',ja:'国立公園',phrase:'Daisetsuzan is Japan\'s largest national park.',phrasePh:'/daɪsetsʊzæn ɪz dʒəˈpænz ˈlɑːrdʒɪst ˈnæʃənəl pɑːrk/',phraseJa:'大雪山は日本最大の国立公園です。'},
+      {en:'Lake',ph:'/leɪk/',ja:'湖',phrase:'Lake Toya is one of Hokkaido\'s most beautiful lakes.',phrasePh:'/leɪk toʊjɑː ɪz wʌn əv hɒˈkaɪdoʊz moʊst ˈbjuːtɪfəl leɪks/',phraseJa:'洞爺湖は北海道で最も美しい湖の一つです。'},
+      {en:'Flower field',ph:'/ˈflaʊər fiːld/',ja:'花畑',phrase:'Furano has stunning flower fields in summer.',phrasePh:'/fʊˈrɑːnoʊ hæz ˈstʌnɪŋ ˈflaʊər fiːldz ɪn ˈsʌmər/',phraseJa:'富良野には夏に見事な花畑があります。'},
+      {en:'Lavender',ph:'/ˈlævəndər/',ja:'ラベンダー',phrase:'The lavender fields in Furano are breathtaking.',phrasePh:'/ðə ˈlævəndər fiːldz ɪn fʊˈrɑːnoʊ ɑːr ˈbreθteɪkɪŋ/',phraseJa:'富良野のラベンダー畑は息をのむ美しさです。'},
+      {en:'Autumn leaves',ph:'/ˈɔːtəm liːvz/',ja:'紅葉',phrase:'The autumn leaves in Hokkaido are magnificent.',phrasePh:'/ðə ˈɔːtəm liːvz ɪn hɒˈkaɪdoʊ ɑːr mæɡˈnɪfɪsənt/',phraseJa:'北海道の紅葉は素晴らしいです。'},
+      {en:'First snow',ph:'/fɜːrst snoʊ/',ja:'初雪',phrase:'The first snow in Sapporo usually falls in November.',phrasePh:'/ðə fɜːrst snoʊ ɪn ˌsæpɔːroʊ ˈjuːʒuəli fɔːlz ɪn noʊˈvembər/',phraseJa:'札幌の初雪は通常11月に降ります。'},
+      {en:'Dairy products',ph:'/ˈdeəri ˈprɒdʌkts/',ja:'乳製品',phrase:'Hokkaido dairy products are famous throughout Japan.',phrasePh:'/hɒˈkaɪdoʊ ˈdeəri ˈprɒdʌkts ɑːr ˈfeɪməs θruːˈaʊt dʒəˈpæn/',phraseJa:'北海道の乳製品は日本全国で有名です。'},
+      {en:'Crab',ph:'/kræb/',ja:'カニ',phrase:'Hokkaido king crab is world-class.',phrasePh:'/hɒˈkaɪdoʊ kɪŋ kræb ɪz ˈwɜːrld klɑːs/',phraseJa:'北海道のズワイガニは世界一級品です。'},
+      {en:'Butter',ph:'/ˈbʌtər/',ja:'バター',phrase:'Hokkaido butter is used in famous local sweets.',phrasePh:'/hɒˈkaɪdoʊ ˈbʌtər ɪz juːzd ɪn ˈfeɪməs ˈloʊkəl swiːts/',phraseJa:'北海道バターは有名な地元のお菓子に使われています。'},
+      {en:'Corn',ph:'/kɔːrn/',ja:'とうもろこし',phrase:'Fresh corn from Hokkaido is very sweet.',phrasePh:'/freʃ kɔːrn frəm hɒˈkaɪdoʊ ɪz ˈveri swiːt/',phraseJa:'北海道の新鮮なとうもろこしはとても甘いです。'},
     ],
     1:[
       {en:'Airport',ph:'/ˈerpɔːrt/',ja:'空港',phrase:'Take me to the international airport, please.',phrasePh:'/teɪk miː tə ðə ˌɪntərˈnæʃənəl ˈerpɔːrt pliːz/',phraseJa:'国際空港まで連れて行ってください。'},
@@ -328,12 +486,58 @@ const DB={
       {en:'Admission fee',ph:'/ədˈmɪʃən fiː/',ja:'入場料',phrase:'What is the admission fee for the museum?',phrasePh:'/wɒt ɪz ðə ədˈmɪʃən fiː fɔːr ðə mjuːˈziːəm/',phraseJa:'博物館の入場料はいくらですか？'},
       {en:'Souvenir',ph:'/ˌsuːvəˈnɪər/',ja:'お土産',phrase:'Where is the best place to buy souvenirs?',phrasePh:'/wer ɪz ðə best pleɪs tə baɪ ˌsuːvəˈnɪərz/',phraseJa:'お土産を買うのに一番いい場所はどこですか？'},
       {en:'Scenic route',ph:'/ˈsiːnɪk ruːt/',ja:'景色の良いルート',phrase:'Is there a scenic route to the hotel?',phrasePh:'/ɪz ðer ə ˈsiːnɪk ruːt tə ðə hoʊˈtel/',phraseJa:'ホテルまでの景色の良いルートはありますか？'},
+      {en:'New Chitose Airport',ph:'/njuː tʃɪtoʊseɪ ˈerpɔːrt/',ja:'新千歳空港',phrase:'New Chitose Airport is about thirty minutes from Sapporo.',phrasePh:'/njuː tʃɪtoʊseɪ ˈerpɔːrt ɪz əˈbaʊt ˈθɜːrti ˈmɪnɪts frəm ˌsæpɔːroʊ/',phraseJa:'新千歳空港は札幌から約30分です。'},
+      {en:'Departure',ph:'/dɪˈpɑːrtʃər/',ja:'出発',phrase:'What time is your departure?',phrasePh:'/wɒt taɪm ɪz jɔːr dɪˈpɑːrtʃər/',phraseJa:'出発は何時ですか？'},
+      {en:'Arrival',ph:'/əˈraɪvəl/',ja:'到着',phrase:'What time is the arrival at Sapporo?',phrasePh:'/wɒt taɪm ɪz ðə əˈraɪvəl æt ˌsæpɔːroʊ/',phraseJa:'札幌への到着は何時ですか？'},
+      {en:'Luggage claim',ph:'/ˈlʌɡɪdʒ kleɪm/',ja:'手荷物受取',phrase:'The luggage claim is on the ground floor.',phrasePh:'/ðə ˈlʌɡɪdʒ kleɪm ɪz ɒn ðə ɡraʊnd flɔːr/',phraseJa:'手荷物受取は1階にあります。'},
+      {en:'Customs',ph:'/ˈkʌstəmz/',ja:'税関',phrase:'You need to go through customs before exiting.',phrasePh:'/juː niːd tə ɡoʊ θruː ˈkʌstəmz bɪˈfɔːr ˈeksɪtɪŋ/',phraseJa:'出る前に税関を通らなければなりません。'},
+      {en:'Passport',ph:'/ˈpæspɔːrt/',ja:'パスポート',phrase:'Please have your passport ready at the gate.',phrasePh:'/pliːz hæv jɔːr ˈpæspɔːrt ˈredi æt ðə ɡeɪt/',phraseJa:'ゲートでパスポートをご準備ください。'},
+      {en:'Visa',ph:'/ˈviːzə/',ja:'ビザ',phrase:'Do you need a visa to enter Japan?',phrasePh:'/duː juː niːd ə ˈviːzə tə ˈentər dʒəˈpæn/',phraseJa:'日本に入国するにはビザが必要ですか？'},
+      {en:'Sightseeing bus',ph:'/ˈsaɪtsiːɪŋ bʌs/',ja:'観光バス',phrase:'The sightseeing bus leaves from Odori Park.',phrasePh:'/ðə ˈsaɪtsiːɪŋ bʌs liːvz frəm ˈoʊdɔːri pɑːrk/',phraseJa:'観光バスは大通公園から出発します。'},
+      {en:'Tour guide',ph:'/tʊr ɡaɪd/',ja:'ツアーガイド',phrase:'Our tour guide will meet you at the hotel.',phrasePh:'/aʊər tʊr ɡaɪd wɪl miːt juː æt ðə hoʊˈtel/',phraseJa:'ツアーガイドがホテルでお待ちします。'},
+      {en:'Museum',ph:'/mjuːˈziːəm/',ja:'博物館・美術館',phrase:'The Hokkaido Museum is very interesting.',phrasePh:'/ðə hɒˈkaɪdoʊ mjuːˈziːəm ɪz ˈveri ˈɪntrɪstɪŋ/',phraseJa:'北海道博物館はとても興味深いです。'},
+      {en:'Temple',ph:'/ˈtempəl/',ja:'お寺',phrase:'Have you visited any temples in Japan?',phrasePh:'/hæv juː ˈvɪzɪtɪd ˈeni ˈtemplz ɪn dʒəˈpæn/',phraseJa:'日本のお寺を訪れたことはありますか？'},
+      {en:'Shrine',ph:'/ʃraɪn/',ja:'神社',phrase:'Hokkaido Shrine is a must-see in Sapporo.',phrasePh:'/hɒˈkaɪdoʊ ʃraɪn ɪz ə mʌst siː ɪn ˌsæpɔːroʊ/',phraseJa:'北海道神宮は札幌の必見スポットです。'},
+      {en:'Photography',ph:'/fəˈtɒɡrəfi/',ja:'写真撮影',phrase:'Photography is not allowed inside the shrine.',phrasePh:'/fəˈtɒɡrəfi ɪz nɒt əˈlaʊd ɪnˈsaɪd ðə ʃraɪn/',phraseJa:'神社の内部では写真撮影は禁止です。'},
+      {en:'Opening hours',ph:'/ˈoʊpənɪŋ ˈaʊərz/',ja:'開館時間',phrase:'What are the opening hours of the museum?',phrasePh:'/wɒt ɑːr ðə ˈoʊpənɪŋ ˈaʊərz əv ðə mjuːˈziːəm/',phraseJa:'博物館の開館時間は何時ですか？'},
+      {en:'Day trip',ph:'/deɪ trɪp/',ja:'日帰り旅行',phrase:'Otaru is perfect for a day trip from Sapporo.',phrasePh:'/oʊtɑːruː ɪz ˈpɜːrfɪkt fɔːr ə deɪ trɪp frəm ˌsæpɔːroʊ/',phraseJa:'小樽は札幌からの日帰り旅行に最適です。'},
+      {en:'Canal',ph:'/kəˈnæl/',ja:'運河',phrase:'The Otaru Canal is beautiful at night.',phrasePh:'/ðə oʊtɑːruː kəˈnæl ɪz ˈbjuːtɪfəl æt naɪt/',phraseJa:'小樽運河は夜に美しいです。'},
+      {en:'Glass art',ph:'/ɡlɑːs ɑːrt/',ja:'ガラス工芸',phrase:'Otaru is famous for its beautiful glass art.',phrasePh:'/oʊtɑːruː ɪz ˈfeɪməs fɔːr ɪts ˈbjuːtɪfəl ɡlɑːs ɑːrt/',phraseJa:'小樽は美しいガラス工芸で有名です。'},
+      {en:'Music box',ph:'/ˈmjuːzɪk bɒks/',ja:'オルゴール',phrase:'Otaru has many beautiful music box shops.',phrasePh:'/oʊtɑːruː hæz ˈmeni ˈbjuːtɪfəl ˈmjuːzɪk bɒks ʃɒps/',phraseJa:'小樽には美しいオルゴールのお店がたくさんあります。'},
+      {en:'Hakodate',ph:'/hɑːkɒdɑːteɪ/',ja:'函館',phrase:'Hakodate is famous for its night view and morning market.',phrasePh:'/hɑːkɒdɑːteɪ ɪz ˈfeɪməs fɔːr ɪts naɪt vjuː/',phraseJa:'函館は夜景と朝市で有名です。'},
+      {en:'Asahikawa',ph:'/ɑːsɑːhiːkɑːwɑː/',ja:'旭川',phrase:'Asahikawa Zoo is one of Japan\'s best zoos.',phrasePh:'/ɑːsɑːhiːkɑːwɑː zuː ɪz wʌn əv dʒəˈpænz best zuːz/',phraseJa:'旭山動物園は日本最高の動物園の一つです。'},
+      {en:'Kushiro',ph:'/kʊʃɪroʊ/',ja:'釧路',phrase:'Kushiro Wetlands is a UNESCO Ramsar site.',phrasePh:'/kʊʃɪroʊ ˈwetlændz ɪz ə juːˈneskəʊ ˈræmzɑːr saɪt/',phraseJa:'釧路湿原はユネスコのラムサール条約地です。'},
+      {en:'Biei',ph:'/biːeɪ/',ja:'美瑛',phrase:'Biei is famous for its patchwork hill scenery.',phrasePh:'/biːeɪ ɪz ˈfeɪməs fɔːr ɪts ˈpætʃwɜːrk hɪl ˈsiːnəri/',phraseJa:'美瑛はパッチワークの丘の景色で有名です。'},
+      {en:'Shikotsu Lake',ph:'/ʃɪkɒtsʊ leɪk/',ja:'支笏湖',phrase:'Shikotsu Lake has some of the clearest water in Japan.',phrasePh:'/ʃɪkɒtsʊ leɪk hæz sʌm əv ðə ˈklɪərɪst ˈwɔːtər ɪn dʒəˈpæn/',phraseJa:'支笏湖は日本で最も透明度の高い水を誇ります。'},
+      {en:'Toya Lake',ph:'/toʊjɑː leɪk/',ja:'洞爺湖',phrase:'Toya Lake has a beautiful caldera view.',phrasePh:'/toʊjɑː leɪk hæz ə ˈbjuːtɪfəl kɑːlˈderə vjuː/',phraseJa:'洞爺湖はカルデラの美しい景観があります。'},
+      {en:'Niseko',ph:'/niːseɪkoʊ/',ja:'ニセコ',phrase:'Niseko is famous for the best powder snow.',phrasePh:'/niːseɪkoʊ ɪz ˈfeɪməs fɔːr ðə best ˈpaʊdər snoʊ/',phraseJa:'ニセコは最高のパウダースノーで有名です。'},
+      {en:'Furano',ph:'/fʊˈrɑːnoʊ/',ja:'富良野',phrase:'Furano is famous for lavender and cheese.',phrasePh:'/fʊˈrɑːnoʊ ɪz ˈfeɪməs fɔːr ˈlævəndər ænd tʃiːz/',phraseJa:'富良野はラベンダーとチーズで有名です。'},
+      {en:'Volcano',ph:'/vɒlˈkeɪnoʊ/',ja:'火山',phrase:'Mt. Usu is an active volcano near Toya Lake.',phrasePh:'/maʊnt uːsuː ɪz ən ˈæktɪv vɒlˈkeɪnoʊ nɪr toʊjɑː leɪk/',phraseJa:'有珠山は洞爺湖の近くにある活火山です。'},
+      {en:'Wildlife',ph:'/ˈwaɪldlaɪf/',ja:'野生動物',phrase:'You can sometimes see wildlife on this road.',phrasePh:'/juː kæn ˈsʌmtaɪmz siː ˈwaɪldlaɪf ɒn ðɪs roʊd/',phraseJa:'この道で野生動物に会えることがあります。'},
+      {en:'Fox',ph:'/fɒks/',ja:'キツネ',phrase:'Red foxes are common in Hokkaido.',phrasePh:'/red fɒksɪz ɑːr ˈkɒmən ɪn hɒˈkaɪdoʊ/',phraseJa:'赤ギツネは北海道によく見られます。'},
+      {en:'Deer',ph:'/dɪr/',ja:'鹿',phrase:'Please be careful of deer crossing the road.',phrasePh:'/pliːz biː ˈkerəfəl əv dɪr ˈkrɒsɪŋ ðə roʊd/',phraseJa:'道路を横断する鹿にご注意ください。'},
     ],
     2:[
       {en:'Check-in',ph:'/ˈtʃek ɪn/',ja:'チェックイン',phrase:'Where is the check-in counter for this airline?',phrasePh:'/wer ɪz ðə ˈtʃek ɪn ˈkaʊntər/',phraseJa:'この航空会社のチェックインカウンターはどこですか？'},
       {en:'Luggage',ph:'/ˈlʌɡɪdʒ/',ja:'荷物',phrase:'Could you help me with my luggage, please?',phrasePh:'/kʊd juː help miː wɪð maɪ ˈlʌɡɪdʒ pliːz/',phraseJa:'荷物を運ぶのを手伝っていただけますか？'},
       {en:'Off the beaten path',ph:'/ɒf ðə ˈbiːtən pæθ/',ja:'穴場',phrase:'Do you know any off the beaten path spots in Sapporo?',phrasePh:'/duː juː noʊ ˈeni ɒf ðə ˈbiːtən pæθ spɒts/',phraseJa:'札幌の穴場スポットを知っていますか？'},
       {en:'Itinerary',ph:'/aɪˈtɪnəreri/',ja:'旅程',phrase:"What's on your itinerary for today?",phrasePh:'/wɒts ɒn jɔːr aɪˈtɪnəreri fɔːr təˈdeɪ/',phraseJa:'今日の旅程はどのようなご予定ですか？'},
+      {en:'Heritage site',ph:'/ˈherɪtɪdʒ saɪt/',ja:'遺産・史跡',phrase:'Is there a UNESCO World Heritage site near here?',phrasePh:'/ɪz ðer ə juːˈneskəʊ wɜːrld ˈherɪtɪdʒ saɪt nɪr hɪr/',phraseJa:'この近くにユネスコ世界遺産はありますか？'},
+      {en:'Nature trail',ph:'/ˈneɪtʃər treɪl/',ja:'自然歩道',phrase:'Is there a nature trail suitable for beginners?',phrasePh:'/ɪz ðer ə ˈneɪtʃər treɪl ˈsuːtəbəl fɔːr bɪˈɡɪnərz/',phraseJa:'初心者向けの自然歩道はありますか？'},
+      {en:'Guided tour',ph:'/ˈɡaɪdɪd tʊr/',ja:'ガイドツアー',phrase:'Is there a guided tour available in English?',phrasePh:'/ɪz ðer ə ˈɡaɪdɪd tʊr əˈveɪləbəl ɪn ˈɪŋɡlɪʃ/',phraseJa:'英語のガイドツアーはありますか？'},
+      {en:'Panoramic view',ph:'/ˌpænəˈræmɪk vjuː/',ja:'パノラマの景色',phrase:'The panoramic view from Mt. Moiwa is stunning.',phrasePh:'/ðə ˌpænəˈræmɪk vjuː frəm maʊnt moɪwɑː ɪz ˈstʌnɪŋ/',phraseJa:'藻岩山からのパノラマの景色は息をのみます。'},
+      {en:'Observation deck',ph:'/ˌɒbzərˈveɪʃən dek/',ja:'展望台',phrase:'The observation deck opens at nine AM.',phrasePh:'/ðə ˌɒbzərˈveɪʃən dek ˈoʊpənz æt naɪn eɪˈem/',phraseJa:'展望台は午前9時に開きます。'},
+      {en:'Night illumination',ph:'/naɪt ɪˌluːmɪˈneɪʃən/',ja:'夜のイルミネーション',phrase:'Odori Park has beautiful night illuminations in winter.',phrasePh:'/ˈoʊdɔːri pɑːrk hæz ˈbjuːtɪfəl naɪt ɪˌluːmɪˈneɪʃənz ɪn ˈwɪntər/',phraseJa:'大通公園では冬に美しいイルミネーションが輝きます。'},
+      {en:'Fish market',ph:'/fɪʃ ˈmɑːrkɪt/',ja:'魚市場',phrase:'The morning fish market at Nijo is very lively.',phrasePh:'/ðə ˈmɔːrnɪŋ fɪʃ ˈmɑːrkɪt æt niːdʒoʊ ɪz ˈveri ˈlaɪvli/',phraseJa:'二条の朝の魚市場はとても活気があります。'},
+      {en:'Food court',ph:'/fuːd kɔːrt/',ja:'フードコート',phrase:'The food court on the basement level has local dishes.',phrasePh:'/ðə fuːd kɔːrt ɒn ðə ˈbeɪsmənt ˈlevəl hæz ˈloʊkəl ˈdɪʃɪz/',phraseJa:'地下のフードコートには地元料理があります。'},
+      {en:'Underground mall',ph:'/ˌʌndərˈɡraʊnd mɔːl/',ja:'地下街',phrase:'Sapporo\'s underground mall is great for winter shopping.',phrasePh:'/ˌsæpɔːroʊz ˌʌndərˈɡraʊnd mɔːl ɪz ɡreɪt fɔːr ˈwɪntər ˈʃɒpɪŋ/',phraseJa:'札幌の地下街は冬のショッピングに最適です。'},
+      {en:'Architectural style',ph:'/ˌɑːrkɪˈtektʃərəl staɪl/',ja:'建築様式',phrase:'The red brick building shows European architectural style.',phrasePh:'/ðə red brɪk ˈbɪldɪŋ ʃoʊz ˌjʊərəˈpiːən ˌɑːrkɪˈtektʃərəl staɪl/',phraseJa:'赤れんが庁舎はヨーロッパの建築様式を示しています。'},
+      {en:'Recommended restaurant',ph:'/ˌrekəˈmendɪd ˈrestrɒnt/',ja:'おすすめレストラン',phrase:'Can you recommend a good restaurant nearby?',phrasePh:'/kæn juː ˌrekəˈmend ə ɡʊd ˈrestrɒnt ˈnɪərbaɪ/',phraseJa:'近くのおすすめレストランを教えていただけますか？'},
+      {en:'Local cuisine',ph:'/ˈloʊkəl kwɪˈziːn/',ja:'地元料理',phrase:'What is the most famous local cuisine in this area?',phrasePh:'/wɒt ɪz ðə moʊst ˈfeɪməs ˈloʊkəl kwɪˈziːn ɪn ðɪs ˈeəriə/',phraseJa:'この地域で最も有名な地元料理は何ですか？'},
+      {en:'Festival',ph:'/ˈfestɪvəl/',ja:'祭り・フェスティバル',phrase:'Are there any festivals happening this weekend?',phrasePh:'/ɑːr ðer ˈeni ˈfestɪvəlz ˈhæpənɪŋ ðɪs ˈwiːkend/',phraseJa:'今週末に祭りはありますか？'},
+      {en:'Fireworks',ph:'/ˈfaɪərwɜːrks/',ja:'花火',phrase:'The summer fireworks over Toya Lake are spectacular.',phrasePh:'/ðə ˈsʌmər ˈfaɪərwɜːrks ˈoʊvər toʊjɑː leɪk ɑːr spekˈtækjələr/',phraseJa:'洞爺湖の夏の花火は壮観です。'},
+      {en:'Ski jump',ph:'/skiː dʒʌmp/',ja:'スキージャンプ',phrase:'The Okurayama Ski Jump is a famous landmark.',phrasePh:'/ðə oʊkʊrɑːjɑːmɑː skiː dʒʌmp ɪz ə ˈfeɪməs ˈlændmɑːrk/',phraseJa:'大倉山シャンツェは有名なランドマークです。'},
+      {en:'Olympic legacy',ph:'/əˈlɪmpɪk ˈleɡəsi/',ja:'オリンピックの遺産',phrase:'Sapporo hosted the 1972 Winter Olympics.',phrasePh:'/ˌsæpɔːroʊ ˈhoʊstɪd ðə ˈnaɪntiːn ˈsevənti tuː ˈwɪntər əˈlɪmpɪks/',phraseJa:'札幌は1972年の冬季オリンピックを開催しました。'},
     ],
   },
   'ビジネス':{
@@ -344,6 +548,26 @@ const DB={
       {en:'Rush hour',ph:'/rʌʃ ˈaʊər/',ja:'ラッシュアワー',phrase:'Rush hour traffic may cause a delay.',phrasePh:'/rʌʃ ˈaʊər ˈtræfɪk meɪ kɔːz ə dɪˈleɪ/',phraseJa:'ラッシュアワーの渋滞で遅れるかもしれません。'},
       {en:'Business district',ph:'/ˈbɪznəs ˈdɪstrɪkt/',ja:'ビジネス街',phrase:'Drop me off at the business district, please.',phrasePh:'/drɒp miː ɒf æt ðə ˈbɪznəs ˈdɪstrɪkt pliːz/',phraseJa:'ビジネス街で降ろしてください。'},
       {en:'Conference',ph:'/ˈkɒnfərəns/',ja:'会議・カンファレンス',phrase:'The international conference starts at two PM.',phrasePh:'/ðə ˌɪntərˈnæʃənəl ˈkɒnfərəns stɑːrts æt tuː piːˈem/',phraseJa:'国際カンファレンスは午後2時に始まります。'},
+      {en:'Office building',ph:'/ˈɒfɪs ˈbɪldɪŋ/',ja:'オフィスビル',phrase:'The office building is right across the street.',phrasePh:'/ðə ˈɒfɪs ˈbɪldɪŋ ɪz raɪt əˈkrɒs ðə striːt/',phraseJa:'オフィスビルは通りの真向かいにあります。'},
+      {en:'Trade fair',ph:'/treɪd fer/',ja:'見本市・展示会',phrase:'The trade fair is being held at the convention center.',phrasePh:'/ðə treɪd fer ɪz ˈbiːɪŋ held æt ðə kənˈvenʃən ˈsentər/',phraseJa:'見本市はコンベンションセンターで開催されています。'},
+      {en:'Convention center',ph:'/kənˈvenʃən ˈsentər/',ja:'コンベンションセンター',phrase:'Please take me to the Sapporo Convention Center.',phrasePh:'/pliːz teɪk miː tə ðə ˌsæpɔːroʊ kənˈvenʃən ˈsentər/',phraseJa:'札幌コンベンションセンターまでお願いします。'},
+      {en:'Colleague',ph:'/ˈkɒliːɡ/',ja:'同僚',phrase:'I am meeting my colleagues for dinner tonight.',phrasePh:'/aɪ æm ˈmiːtɪŋ maɪ ˈkɒliːɡz fɔːr ˈdɪnər təˈnaɪt/',phraseJa:'今夜は同僚たちと夕食の予定です。'},
+      {en:'Business card',ph:'/ˈbɪznəs kɑːrd/',ja:'名刺',phrase:'In Japan, exchange business cards with both hands.',phrasePh:'/ɪn dʒəˈpæn ɪksˈtʃeɪndʒ ˈbɪznəs kɑːrdz wɪð boʊθ hændz/',phraseJa:'日本では両手で名刺を交換します。'},
+      {en:'Punctual',ph:'/ˈpʌŋktʃuəl/',ja:'時間を守る',phrase:'Japanese business culture values being punctual.',phrasePh:'/dʒæpəˈniːz ˈbɪznəs ˈkʌltʃər ˈvæljuːz ˈbiːɪŋ ˈpʌŋktʃuəl/',phraseJa:'日本のビジネス文化では時間厳守が重視されます。'},
+      {en:'Report',ph:'/rɪˈpɔːrt/',ja:'報告書・レポート',phrase:'I need to submit my report by this afternoon.',phrasePh:'/aɪ niːd tə səbˈmɪt maɪ rɪˈpɔːrt baɪ ðɪs ˌɑːftərˈnuːn/',phraseJa:'今日の午後までにレポートを提出しなければなりません。'},
+      {en:'Branch office',ph:'/brɑːntʃ ˈɒfɪs/',ja:'支社',phrase:'Our Sapporo branch office is on the fifth floor.',phrasePh:'/aʊər ˌsæpɔːroʊ brɑːntʃ ˈɒfɪs ɪz ɒn ðə fɪfθ flɔːr/',phraseJa:'私どもの札幌支社は5階にあります。'},
+      {en:'Negotiation',ph:'/nɪˌɡoʊʃɪˈeɪʃən/',ja:'交渉',phrase:'We have a negotiation scheduled for this morning.',phrasePh:'/wiː hæv ə nɪˌɡoʊʃɪˈeɪʃən ˈʃedjuːld fɔːr ðɪs ˈmɔːrnɪŋ/',phraseJa:'今朝は交渉の予定が入っています。'},
+      {en:'Factory',ph:'/ˈfæktəri/',ja:'工場',phrase:'Please take me to the Toyohira factory.',phrasePh:'/pliːz teɪk miː tə ðə toʊjoʊhɪrɑː ˈfæktəri/',phraseJa:'豊平の工場までお願いします。'},
+      {en:'Seminar',ph:'/ˈsemɪnɑːr/',ja:'セミナー',phrase:'I am attending a business seminar this afternoon.',phrasePh:'/aɪ æm əˈtendɪŋ ə ˈbɪznəs ˈsemɪnɑːr ðɪs ˌɑːftərˈnuːn/',phraseJa:'今日の午後はビジネスセミナーに参加します。'},
+      {en:'Hotel check-out',ph:'/hoʊˈtel tʃek ˈaʊt/',ja:'ホテルのチェックアウト',phrase:'I need to check out by eleven and catch a flight.',phrasePh:'/aɪ niːd tə tʃek ˈaʊt baɪ ɪˈlevən ænd kætʃ ə flaɪt/',phraseJa:'11時にチェックアウトしてフライトに乗らないといけません。'},
+      {en:'Important document',ph:'/ɪmˈpɔːrtənt ˈdɒkjumənt/',ja:'重要書類',phrase:'I must not forget this important document.',phrasePh:'/aɪ mʌst nɒt fərˈɡet ðɪs ɪmˈpɔːrtənt ˈdɒkjumənt/',phraseJa:'この重要書類を忘れてはなりません。'},
+      {en:'Interpreter',ph:'/ɪnˈtɜːrprɪtər/',ja:'通訳',phrase:'Do you know where I can find an interpreter?',phrasePh:'/duː juː noʊ wer aɪ kæn faɪnd ən ɪnˈtɜːrprɪtər/',phraseJa:'通訳を探せる場所を知っていますか？'},
+      {en:'Partnership',ph:'/ˈpɑːrtnərʃɪp/',ja:'パートナーシップ',phrase:'We are building a strong business partnership.',phrasePh:'/wiː ɑːr ˈbɪldɪŋ ə strɒŋ ˈbɪznəs ˈpɑːrtnərʃɪp/',phraseJa:'私たちは強力なビジネスパートナーシップを構築しています。'},
+      {en:'Expense',ph:'/ɪkˈspens/',ja:'経費',phrase:'I will need a receipt for my travel expense claim.',phrasePh:'/aɪ wɪl niːd ə rɪˈsiːt fɔːr maɪ ˈtrævəl ɪkˈspens kleɪm/',phraseJa:'交通費の申請のため領収書が必要です。'},
+      {en:'Shareholder',ph:'/ˈʃerhoʊldər/',ja:'株主',phrase:'The shareholder meeting is held every March.',phrasePh:'/ðə ˈʃerhoʊldər ˈmiːtɪŋ ɪz held ˈevri mɑːrtʃ/',phraseJa:'株主総会は毎年3月に開催されます。'},
+      {en:'Board of directors',ph:'/bɔːrd əv daɪˈrektərz/',ja:'取締役会',phrase:'The board of directors meets quarterly.',phrasePh:'/ðə bɔːrd əv daɪˈrektərz miːts ˈkwɔːrtərli/',phraseJa:'取締役会は四半期ごとに開催されます。'},
+      {en:'Staff',ph:'/stɑːf/',ja:'スタッフ・社員',phrase:'Our staff will assist you in any way possible.',phrasePh:'/aʊər stɑːf wɪl əˈsɪst juː ɪn ˈeni weɪ ˈpɒsɪbəl/',phraseJa:'スタッフが可能な限りサポートします。'},
+      {en:'Budget',ph:'/ˈbʌdʒɪt/',ja:'予算',phrase:'The project budget has been approved.',phrasePh:'/ðə ˈprɒdʒekt ˈbʌdʒɪt hæz biːn əˈpruːvd/',phraseJa:'プロジェクトの予算が承認されました。'},
     ],
     1:[
       {en:'Appointment',ph:'/əˈpɔɪntmənt/',ja:'予約・アポ',phrase:'I have an appointment with the director at three.',phrasePh:'/aɪ hæv ən əˈpɔɪntmənt wɪð ðə dɪˈrektər æt θriː/',phraseJa:'3時に部長とアポがあります。'},
@@ -351,11 +575,40 @@ const DB={
       {en:'Deadline',ph:'/ˈdedlaɪn/',ja:'締め切り',phrase:'I must not miss this deadline.',phrasePh:'/aɪ mʌst nɒt mɪs ðɪs ˈdedlaɪn/',phraseJa:'この締め切りは絶対に守らなければなりません。'},
       {en:'Client',ph:'/ˈklaɪənt/',ja:'クライアント・顧客',phrase:'I am meeting an important client from overseas.',phrasePh:'/aɪ æm ˈmiːtɪŋ ən ɪmˈpɔːrtənt ˈklaɪənt frəm ˌoʊvərˈsiːz/',phraseJa:'海外からの重要なクライアントと会います。'},
       {en:'Presentation',ph:'/ˌprezənˈteɪʃən/',ja:'プレゼン',phrase:'My presentation to the board is in one hour.',phrasePh:'/maɪ ˌprezənˈteɪʃən tə ðə bɔːrd ɪz ɪn wʌn ˈaʊər/',phraseJa:'1時間後に役員へのプレゼンがあります。'},
+      {en:'Sales target',ph:'/seɪlz ˈtɑːrɡɪt/',ja:'営業目標',phrase:'We have exceeded our sales target this quarter.',phrasePh:'/wiː hæv ɪkˈsiːdɪd aʊər seɪlz ˈtɑːrɡɪt ðɪs ˈkwɔːrtər/',phraseJa:'今四半期の営業目標を達成しました。'},
+      {en:'Market share',ph:'/ˈmɑːrkɪt ʃer/',ja:'市場シェア',phrase:'Our company has increased its market share.',phrasePh:'/aʊər ˈkʌmpəni hæz ɪnˈkriːst ɪts ˈmɑːrkɪt ʃer/',phraseJa:'当社の市場シェアが拡大しました。'},
+      {en:'Revenue',ph:'/ˈrevənjuː/',ja:'収益・売上',phrase:'Annual revenue has grown by fifteen percent.',phrasePh:'/ˈænjuəl ˈrevənjuː hæz ɡroʊn baɪ ˈfɪfˈtiːn pərˈsent/',phraseJa:'年間収益が15パーセント増加しました。'},
+      {en:'Investment',ph:'/ɪnˈvestmənt/',ja:'投資',phrase:'We are considering a major investment in Hokkaido.',phrasePh:'/wiː ɑːr kənˈsɪdərɪŋ ə ˈmeɪdʒər ɪnˈvestmənt ɪn hɒˈkaɪdoʊ/',phraseJa:'北海道への大規模な投資を検討しています。'},
+      {en:'Contract',ph:'/ˈkɒntrækt/',ja:'契約',phrase:'We signed the contract this morning.',phrasePh:'/wiː saɪnd ðə ˈkɒntrækt ðɪs ˈmɔːrnɪŋ/',phraseJa:'今朝、契約を締結しました。'},
+      {en:'Proposal',ph:'/prəˈpoʊzəl/',ja:'提案書',phrase:'I need to submit a proposal by Friday.',phrasePh:'/aɪ niːd tə səbˈmɪt ə prəˈpoʊzəl baɪ ˈfraɪdeɪ/',phraseJa:'金曜日までに提案書を提出しなければなりません。'},
+      {en:'Supply chain',ph:'/səˈplaɪ tʃeɪn/',ja:'サプライチェーン',phrase:'The global supply chain has been disrupted.',phrasePh:'/ðə ˈɡloʊbəl səˈplaɪ tʃeɪn hæz biːn dɪsˈrʌptɪd/',phraseJa:'グローバルなサプライチェーンが混乱しています。'},
+      {en:'Networking',ph:'/ˈnetwɜːrkɪŋ/',ja:'人脈作り',phrase:'Business networking is very important in Japan.',phrasePh:'/ˈbɪznəs ˈnetwɜːrkɪŋ ɪz ˈveri ɪmˈpɔːrtənt ɪn dʒəˈpæn/',phraseJa:'日本ではビジネスネットワーキングがとても重要です。'},
+      {en:'CEO',ph:'/siː iː ˈoʊ/',ja:'最高経営責任者',phrase:'The CEO will be visiting our Sapporo office next week.',phrasePh:'/ðə siː iː ˈoʊ wɪl biː ˈvɪzɪtɪŋ aʊər ˌsæpɔːroʊ ˈɒfɪs nekst wiːk/',phraseJa:'来週、CEOが札幌オフィスを訪問します。'},
+      {en:'Startup',ph:'/ˈstɑːrtʌp/',ja:'スタートアップ',phrase:'There are many tech startups in Sapporo now.',phrasePh:'/ðer ɑːr ˈmeni tek ˈstɑːrtʌps ɪn ˌsæpɔːroʊ naʊ/',phraseJa:'今は札幌にも多くのテックスタートアップがあります。'},
+      {en:'Teleconference',ph:'/ˈteliˌkɒnfərəns/',ja:'テレビ会議',phrase:'We will hold a teleconference with the Tokyo office.',phrasePh:'/wiː wɪl hoʊld ə ˈteliˌkɒnfərəns wɪð ðə toʊkioʊ ˈɒfɪs/',phraseJa:'東京オフィスとテレビ会議を開催します。'},
+      {en:'Strategic plan',ph:'/strəˈtiːdʒɪk plæn/',ja:'戦略計画',phrase:'We are reviewing our five-year strategic plan.',phrasePh:'/wiː ɑːr rɪˈvjuːɪŋ aʊər faɪv jɪr strəˈtiːdʒɪk plæn/',phraseJa:'5カ年戦略計画を見直しています。'},
+      {en:'Profit margin',ph:'/ˈprɒfɪt ˈmɑːrdʒɪn/',ja:'利益率',phrase:'Our profit margin has improved this year.',phrasePh:'/aʊər ˈprɒfɪt ˈmɑːrdʒɪn hæz ɪmˈpruːvd ðɪs jɪr/',phraseJa:'今年は利益率が改善しました。'},
+      {en:'Workforce',ph:'/ˈwɜːrkfɔːrs/',ja:'労働力・従業員',phrase:'We plan to expand our workforce in Hokkaido.',phrasePh:'/wiː plæn tə ɪkˈspænd aʊər ˈwɜːrkfɔːrs ɪn hɒˈkaɪdoʊ/',phraseJa:'北海道での従業員を拡充する計画があります。'},
+      {en:'Innovation',ph:'/ˌɪnəˈveɪʃən/',ja:'革新・イノベーション',phrase:'Innovation is key to our company\'s success.',phrasePh:'/ˌɪnəˈveɪʃən ɪz kiː tə aʊər ˈkʌmpəniz səkˈses/',phraseJa:'イノベーションが当社の成功の鍵です。'},
+      {en:'Corporate culture',ph:'/ˈkɔːrpərɪt ˈkʌltʃər/',ja:'企業文化',phrase:'Japanese corporate culture emphasizes teamwork.',phrasePh:'/dʒæpəˈniːz ˈkɔːrpərɪt ˈkʌltʃər ˈemfəsaɪzɪz ˈtiːmwɜːrk/',phraseJa:'日本の企業文化はチームワークを重視します。'},
     ],
     2:[
       {en:'Confidential',ph:'/ˌkɒnfɪˈdenʃəl/',ja:'機密の',phrase:'Please keep this information strictly confidential.',phrasePh:'/pliːz kiːp ðɪs ˌɪnfəˈmeɪʃən ˈstrɪktli ˌkɒnfɪˈdenʃəl/',phraseJa:'この情報は厳重に機密扱いにしてください。'},
       {en:'Merger',ph:'/ˈmɜːrdʒər/',ja:'合併',phrase:'The merger announcement will be made next week.',phrasePh:'/ðə ˈmɜːrdʒər əˈnaʊnsmənt wɪl biː meɪd nekst wiːk/',phraseJa:'合併の発表は来週行われます。'},
       {en:'Quarterly report',ph:'/ˈkwɔːrtərli rɪˈpɔːrt/',ja:'四半期報告',phrase:'The quarterly report shows strong growth this term.',phrasePh:'/ðə ˈkwɔːrtərli rɪˈpɔːrt ʃoʊz strɒŋ ɡroʊθ ðɪs tɜːrm/',phraseJa:'四半期報告では今期の力強い成長が示されています。'},
+      {en:'Due diligence',ph:'/djuː ˈdɪlɪdʒəns/',ja:'デューデリジェンス',phrase:'We must complete due diligence before the acquisition.',phrasePh:'/wiː mʌst kəmˈpliːt djuː ˈdɪlɪdʒəns bɪˈfɔːr ðə ˌækwɪˈzɪʃən/',phraseJa:'買収の前にデューデリジェンスを完了しなければなりません。'},
+      {en:'Stakeholder',ph:'/ˈsteɪkhoʊldər/',ja:'利害関係者',phrase:'All stakeholders must be informed of this decision.',phrasePh:'/ɔːl ˈsteɪkhoʊldərz mʌst biː ɪnˈfɔːrmd əv ðɪs dɪˈsɪʒən/',phraseJa:'全ての利害関係者にこの決定を通知しなければなりません。'},
+      {en:'Acquisition',ph:'/ˌækwɪˈzɪʃən/',ja:'買収',phrase:'The acquisition of the startup was completed last month.',phrasePh:'/ðə ˌækwɪˈzɪʃən əv ðə ˈstɑːrtʌp wɒz kəmˈpliːtɪd lɑːst mʌnθ/',phraseJa:'スタートアップの買収が先月完了しました。'},
+      {en:'Joint venture',ph:'/dʒɔɪnt ˈventʃər/',ja:'合弁事業',phrase:'Our joint venture with the Japanese firm has been successful.',phrasePh:'/aʊər dʒɔɪnt ˈventʃər wɪð ðə dʒæpəˈniːz fɜːrm hæz biːn səkˈsesfəl/',phraseJa:'日本企業との合弁事業は成功しています。'},
+      {en:'Intellectual property',ph:'/ˌɪntəˈlektʃuəl ˈprɒpəti/',ja:'知的財産',phrase:'We must protect our intellectual property rights.',phrasePh:'/wiː mʌst prəˈtekt aʊər ˌɪntəˈlektʃuəl ˈprɒpəti raɪts/',phraseJa:'知的財産権を保護しなければなりません。'},
+      {en:'Compliance',ph:'/kəmˈplaɪəns/',ja:'コンプライアンス',phrase:'Full compliance with local regulations is mandatory.',phrasePh:'/fʊl kəmˈplaɪəns wɪð ˈloʊkəl ˌreɡjəˈleɪʃənz ɪz mænˈdeɪtəri/',phraseJa:'地域規制への完全なコンプライアンスが義務付けられています。'},
+      {en:'Corporate governance',ph:'/ˈkɔːrpərɪt ˈɡʌvərnəns/',ja:'コーポレートガバナンス',phrase:'Strong corporate governance builds investor trust.',phrasePh:'/strɒŋ ˈkɔːrpərɪt ˈɡʌvərnəns bɪldz ɪnˈvestər trʌst/',phraseJa:'強固なコーポレートガバナンスが投資家の信頼を築きます。'},
+      {en:'Benchmark',ph:'/ˈbentʃmɑːrk/',ja:'ベンチマーク',phrase:'Our performance exceeds industry benchmarks.',phrasePh:'/aʊər pərˈfɔːrməns ɪkˈsiːdz ˈɪndəstri ˈbentʃmɑːrks/',phraseJa:'当社の業績は業界のベンチマークを上回っています。'},
+      {en:'Outsourcing',ph:'/ˈaʊtsɔːrsɪŋ/',ja:'アウトソーシング',phrase:'We are considering outsourcing our IT operations.',phrasePh:'/wiː ɑːr kənˈsɪdərɪŋ ˈaʊtsɔːrsɪŋ aʊər aɪ tiː ˌɒpəˈreɪʃənz/',phraseJa:'IT業務のアウトソーシングを検討しています。'},
+      {en:'Trade agreement',ph:'/treɪd əˈɡriːmənt/',ja:'貿易協定',phrase:'The new trade agreement opens up opportunities.',phrasePh:'/ðə njuː treɪd əˈɡriːmənt ˈoʊpənz ʌp ˌɒpərˈtjuːnɪtɪz/',phraseJa:'新しい貿易協定が機会を開きます。'},
+      {en:'Fiscal year',ph:'/ˈfɪskəl jɪr/',ja:'会計年度',phrase:'The fiscal year in Japan ends in March.',phrasePh:'/ðə ˈfɪskəl jɪr ɪn dʒəˈpæn endz ɪn mɑːrtʃ/',phraseJa:'日本の会計年度は3月に終わります。'},
+      {en:'Asset management',ph:'/ˈæset ˈmænɪdʒmənt/',ja:'資産管理',phrase:'Our asset management team handles all investments.',phrasePh:'/aʊər ˈæset ˈmænɪdʒmənt tiːm ˈhændlz ɔːl ɪnˈvestmənts/',phraseJa:'資産管理チームが全ての投資を担当します。'},
+      {en:'Restructuring',ph:'/ˌriːˈstrʌktʃərɪŋ/',ja:'リストラ・再構築',phrase:'The corporate restructuring will be completed by year end.',phrasePh:'/ðə ˈkɔːrpərɪt ˌriːˈstrʌktʃərɪŋ wɪl biː kəmˈpliːtɪd baɪ jɪr end/',phraseJa:'企業の再構築は年末までに完了する予定です。'},
     ],
   },
 };
@@ -466,10 +719,10 @@ function playSpWord(){
       spTimer=setTimeout(()=>{speak(w.ja,'ja-JP',1.0,()=>{
         if(!spPlaying)return;
         if(!w.phrase){afterSp();return;}
-        spTimer=setTimeout(()=>{setSpStep('熟語 — 通常');speak(w.phrase,'en-US',1.0,()=>{
-          if(!spPlaying)return;setSpStep('熟語 — ゆっくり');
+        spTimer=setTimeout(()=>{setSpStep('例文 — 通常');speak(w.phrase,'en-US',1.0,()=>{
+          if(!spPlaying)return;setSpStep('例文 — ゆっくり');
           spTimer=setTimeout(()=>{speak(w.phrase,'en-US',0.6,()=>{
-            if(!spPlaying)return;setSpStep('熟語 — 日本語');
+            if(!spPlaying)return;setSpStep('例文 — 日本語');
             spTimer=setTimeout(()=>{speak(w.phraseJa||'','ja-JP',1.0,()=>{if(!spPlaying)return;afterSp();});},400);
           });},400);
         });},500);
@@ -579,10 +832,10 @@ function playWord(){
         speak(w.ja,'ja-JP',1.0,()=>{
           if(!isPlaying)return;
           if(skipPhrase||!w.phrase){afterPhrase(words);return;}
-          playTimer=setTimeout(()=>{setStep('熟語 — 通常');speak(w.phrase,'en-US',1.0,()=>{
-            if(!isPlaying)return;setStep('熟語 — ゆっくり');
+          playTimer=setTimeout(()=>{setStep('例文 — 通常');speak(w.phrase,'en-US',1.0,()=>{
+            if(!isPlaying)return;setStep('例文 — ゆっくり');
             playTimer=setTimeout(()=>{speak(w.phrase,'en-US',0.6,()=>{
-              if(!isPlaying)return;setStep('熟語 — 日本語');
+              if(!isPlaying)return;setStep('例文 — 日本語');
               playTimer=setTimeout(()=>{
                 if(!hideJp)document.getElementById('phraseJa').style.opacity='1';
                 speak(w.phraseJa||'','ja-JP',1.0,()=>{if(!isPlaying)return;afterPhrase(words);});
