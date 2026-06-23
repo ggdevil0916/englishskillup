@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語学習 — タクシー乗務員のための英単語帳</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.10.0/dist/tabler-icons.min.css">
+<style>
+:root {
+  --green: #1D9E75;
+  --green-light: #E1F5EE;
+  --green-dark: #085041;
+  --blue: #185FA5;
+  --blue-light: #E6F1FB;
+  --blue-dark: #0C447C;
+  --amber-light: #FAEEDA;
+  --amber-dark: #633806;
+  --red-light: #FCEBEB;
+  --red-dark: #791F1F;
+  --teal-mid: #5DCAA5;
+  --bg: #ffffff;
+  --bg2: #f5f5f3;
+  --bg3: #eeede9;
+  --text: #1a1a1a;
+  --text2: #666;
+  --text3: #999;
+  --border: rgba(0,0,0,0.12);
+  --border2: rgba(0,0,0,0.22);
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1a;
+    --bg2: #242424;
+    --bg3: #2e2e2e;
+    --text: #f0f0f0;
+    --text2: #aaa;
+    --text3: #666;
+    --border: rgba(255,255,255,0.12);
+    --border2: rgba(255,255,255,0.22);
+    --green-light: #0a3d2a;
+    --blue-light: #0a2540;
+    --amber-light: #3a2800;
+    --red-light: #3a0a0a;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;}
+.container{max-width:480px;margin:0 auto;padding:12px 12px 40px;}
+.header{text-align:center;padding:16px 0 12px;margin-bottom:4px;}
+.header h1{font-size:18px;font-weight:600;color:var(--text);}
+.header p{font-size:12px;color:var(--text3);margin-top:3px;}
+.card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:10px;}
+.tab-nav{display:flex;gap:0;margin-bottom:10px;border:0.5px solid var(--border2);border-radius:var(--radius);overflow:hidden;}
+.tab-nav-btn{flex:1;padding:9px 0;font-size:13px;border:none;background:var(--bg);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;}
+.tab-nav-btn.active{background:var(--green);color:white;font-weight:500;}
+.section{display:none;}.section.visible{display:block;}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.scene-label{font-size:13px;color:var(--text2);}
+.stats-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:10px;}
+.stat-card{background:var(--bg2);border-radius:var(--radius);padding:10px 12px;}
+.stat-card .lbl{font-size:11px;color:var(--text3);margin-bottom:2px;}
+.stat-card .val{font-size:20px;font-weight:600;color:var(--text);}
+.level-tabs{display:flex;gap:6px;margin-bottom:10px;}
+.ltab{flex:1;padding:7px 0;font-size:12px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text2);cursor:pointer;text-align:center;}
+.ltab.active{background:var(--green);color:white;border-color:var(--green);}
+.ltab.locked{opacity:0.4;cursor:not-allowed;}
+.scene-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.stab{font-size:12px;padding:5px 11px;border-radius:99px;border:0.5px solid var(--border2);background:var(--bg);color:var(--text2);cursor:pointer;}
+.stab.active{background:var(--blue);color:white;border-color:var(--blue);}
+.prog-wrap{background:var(--bg2);border-radius:99px;height:4px;margin-bottom:14px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:99px;transition:width 0.3s;}
+.word-meta{font-size:11px;color:var(--text3);margin-bottom:6px;}
+.en-word{font-size:26px;font-weight:600;color:var(--text);margin-bottom:3px;min-height:36px;word-break:break-word;}
+.phonetic{font-size:13px;color:var(--text2);margin-bottom:6px;min-height:18px;}
+.ja-word{font-size:17px;color:var(--green);font-weight:500;min-height:24px;transition:opacity 0.25s;}
+.divider{border:none;border-top:0.5px solid var(--border);margin:10px 0;}
+.phrase-label{font-size:11px;color:var(--text3);margin-bottom:4px;display:flex;align-items:center;gap:4px;}
+.phrase-en{font-size:15px;font-weight:500;color:var(--text);min-height:22px;word-break:break-word;}
+.phrase-ph{font-size:12px;color:var(--text2);min-height:16px;}
+.phrase-ja{font-size:14px;color:var(--blue);font-weight:500;min-height:20px;transition:opacity 0.25s;}
+.badge-row{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+.badge{font-size:11px;padding:3px 9px;border-radius:99px;}
+.badge-lv1{background:var(--green-light);color:var(--green-dark);}
+.badge-lv2{background:var(--blue-light);color:var(--blue-dark);}
+.badge-lv3{background:var(--amber-light);color:var(--amber-dark);}
+.badge-scene{background:var(--bg2);color:var(--text2);}
+.status-txt{font-size:12px;color:var(--text3);}
+.playing-step{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--blue-light);color:var(--blue-dark);}
+.ctrl-row{display:flex;gap:8px;margin-bottom:10px;}
+.btn{flex:1;padding:11px 0;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;transition:transform 0.1s;}
+.btn:active{transform:scale(0.97);}
+.btn-play{background:var(--green);color:white;border-color:var(--green);font-weight:500;flex:2;}
+.btn-ok{background:var(--green-light);color:var(--green-dark);border-color:var(--teal-mid);}
+.btn-ng{background:var(--red-light);color:var(--red-dark);border-color:#F09595;}
+.setting-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.setting-row:last-child{margin-bottom:0;}
+.setting-lbl{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:5px;}
+.setting-val{font-size:13px;font-weight:500;color:var(--text);min-width:36px;text-align:right;}
+input[type=range]{width:100px;accent-color:var(--green);}
+input[type=checkbox]{accent-color:var(--green);width:18px;height:18px;cursor:pointer;}
+.word-list-wrap{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:10px;}
+.wrow{display:flex;align-items:center;padding:9px 14px;border-bottom:0.5px solid var(--border);cursor:pointer;gap:8px;transition:background 0.1s;}
+.wrow:last-child{border-bottom:none;}
+.wrow:hover{background:var(--bg2);}
+.wrow.cur{background:var(--green-light);}
+.wrow.done{opacity:0.4;}
+.wnum{font-size:11px;color:var(--text3);width:18px;flex-shrink:0;}
+.wen{font-size:13px;font-weight:500;flex:1;color:var(--text);}
+.wja{font-size:12px;color:var(--text2);}
+.wcheck{color:var(--green);}
+.sec-title{font-size:12px;color:var(--text3);margin-bottom:5px;padding-left:2px;}
+.filter-btn-active{background:var(--blue)!important;color:white!important;border-color:var(--blue)!important;}
+/* 検索 */
+.search-wrap{margin-bottom:10px;position:relative;}
+.search-input{width:100%;padding:11px 14px 11px 40px;font-size:14px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);}
+.search-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(29,158,117,0.15);}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:17px;pointer-events:none;}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:17px;cursor:pointer;background:none;border:none;padding:2px;}
+.result-count{font-size:12px;color:var(--text3);margin-bottom:8px;}
+.srow{display:flex;flex-direction:column;padding:10px 14px;border-bottom:0.5px solid var(--border);cursor:pointer;gap:3px;transition:background 0.1s;}
+.srow:last-child{border-bottom:none;}
+.srow:hover,.srow.cur{background:var(--green-light);}
+.srow-top{display:flex;align-items:center;gap:8px;}
+.srow-en{font-size:14px;font-weight:500;color:var(--text);}
+.srow-ja{font-size:13px;color:var(--text2);}
+.srow-phrase{font-size:12px;color:var(--blue);}
+.srow-phrase-ja{font-size:12px;color:var(--text3);}
+.srow-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px;}
+.sbadge{font-size:10px;padding:2px 7px;border-radius:99px;}
+.no-result{text-align:center;padding:2rem 1rem;color:var(--text3);font-size:14px;line-height:1.8;}
+mark{background:#FFF3C4;border-radius:2px;padding:0 1px;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1><i class="ti ti-car"></i> 英語学習帳</h1>
+    <p>タクシー乗務員のための英語トレーナー</p>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-nav-btn active" onclick="switchMode('learn')"><i class="ti ti-book"></i> 学習</button>
+    <button class="tab-nav-btn" onclick="switchMode('search')"><i class="ti ti-search"></i> 検索</button>
+  </div>
+
+  <!-- 学習セクション -->
+  <div class="section visible" id="sec-learn">
+    <div class="top-bar">
+      <span class="scene-label" id="topLabel">タクシー — Lv.1 初級</span>
+      <button class="btn" id="filterBtn" style="flex:none;padding:6px 12px;font-size:12px;" onclick="toggleOnlyUnseen()"><i class="ti ti-filter"></i> 未習得のみ</button>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="lbl">習得済み</div><div class="val" id="doneCount">0 / 0</div></div>
+      <div class="stat-card"><div class="lbl">進捗</div><div class="val" id="pctVal">0%</div></div>
+    </div>
+    <div class="level-tabs">
+      <div class="ltab active" id="ltab0" onclick="selectLevel(0)"><i class="ti ti-star"></i> 初級</div>
+      <div class="ltab locked" id="ltab1" onclick="selectLevel(1)"><i class="ti ti-lock"></i> 中級</div>
+      <div class="ltab locked" id="ltab2" onclick="selectLevel(2)"><i class="ti ti-lock"></i> 上級</div>
+    </div>
+    <div class="scene-tabs" id="sceneTabs"></div>
+    <div class="card">
+      <div class="prog-wrap"><div class="prog-fill" id="progFill" style="width:0%;background:var(--green);"></div></div>
+      <div class="word-meta" id="wordMeta">1 / 8</div>
+      <div class="en-word" id="enWord">—</div>
+      <div class="phonetic" id="phonetic"></div>
+      <div class="ja-word" id="jaWord" style="opacity:0;">—</div>
+      <hr class="divider">
+      <div class="phrase-label"><i class="ti ti-quote"></i> 熟語・フレーズ</div>
+      <div class="phrase-en" id="phraseEn">—</div>
+      <div class="phrase-ph" id="phrasePh"></div>
+      <div class="phrase-ja" id="phraseJa">—</div>
+      <div class="badge-row">
+        <span class="badge badge-lv1" id="levelBadge">初級</span>
+        <span class="playing-step" id="stepBadge" style="display:none;"></span>
+        <span class="status-txt" id="statusTxt">再生でスタート</span>
+      </div>
+    </div>
+    <div class="ctrl-row">
+      <button class="btn" onclick="go(-1)" aria-label="前の単語"><i class="ti ti-arrow-left"></i></button>
+      <button class="btn btn-play" id="playBtn" onclick="togglePlay()">
+        <i class="ti ti-player-play" id="playIcon"></i>
+        <span id="playLbl">再生スタート</span>
+      </button>
+      <button class="btn" onclick="go(1)" aria-label="次の単語"><i class="ti ti-arrow-right"></i></button>
+    </div>
+    <div class="ctrl-row">
+      <button class="btn btn-ok" onclick="markWord(true)"><i class="ti ti-check"></i> 覚えた</button>
+      <button class="btn btn-ng" onclick="markWord(false)"><i class="ti ti-refresh"></i> もう一度</button>
+    </div>
+    <div class="card">
+      <div class="setting-row">
+        <span class="setting-lbl"><i class="ti ti-clock"></i> 単語間の間隔</span>
+        <input type="range" min="1" max="5" step="1" value="2" id="pauseSlider" oninput="document.getElementById('pauseVal').textContent=this.value+'秒'">
+        <span class="setting-val" id="pauseVal">2秒</span>
+      </div>
+      <div class="setting-row">
+        <span class="setting-lbl"><i class="ti ti-repeat"></i> ループ再生</span>
+        <input type="checkbox" id="loopCk" checked>
+      </div>
+      <div class="setting-row">
+        <span class="setting-lbl"><i class="ti ti-eye"></i> 日本語を隠す</span>
+        <input type="checkbox" id="hideJpCk">
+      </div>
+      <div class="setting-row">
+        <span class="setting-lbl"><i class="ti ti-quote"></i> 熟語をスキップ</span>
+        <input type="checkbox" id="skipPhraseCk">
+      </div>
+    </div>
+    <div class="sec-title">単語リスト</div>
+    <div class="word-list-wrap" id="wordList"></div>
+  </div>
+
+  <!-- 検索セクション -->
+  <div class="section" id="sec-search">
+    <div class="search-wrap">
+      <i class="ti ti-search search-icon"></i>
+      <input class="search-input" type="text" id="searchInput" placeholder="日本語・英語で検索… 例：空港、airport" oninput="doSearch()">
+      <button class="search-clear" onclick="clearSearch()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="result-count" id="resultCount">全単語から横断検索できます</div>
+    <div class="word-list-wrap" id="searchResults"><div class="no-result"><i class="ti ti-search" style="font-size:28px;"></i><br>キーワードを入力してください<br><span style="font-size:11px;">例：空港 / airport / 渋滞 / traffic</span></div></div>
+    <div id="searchPlayArea" style="display:none;">
+      <div class="card" style="margin-top:10px;">
+        <div class="word-meta" id="spWordMeta"></div>
+        <div class="en-word" id="spEnWord">—</div>
+        <div class="phonetic" id="spPhonetic"></div>
+        <div class="ja-word" id="spJaWord">—</div>
+        <hr class="divider">
+        <div class="phrase-label"><i class="ti ti-quote"></i> 熟語・フレーズ</div>
+        <div class="phrase-en" id="spPhraseEn">—</div>
+        <div class="phrase-ph" id="spPhrasePh"></div>
+        <div class="phrase-ja" id="spPhraseJa">—</div>
+        <div class="badge-row">
+          <span class="badge badge-scene" id="spSceneBadge"></span>
+          <span class="badge badge-lv1" id="spLevelBadge"></span>
+          <span class="playing-step" id="spStepBadge" style="display:none;"></span>
+        </div>
+      </div>
+      <div class="ctrl-row">
+        <button class="btn" onclick="spGo(-1)"><i class="ti ti-arrow-left"></i></button>
+        <button class="btn btn-play" onclick="toggleSpPlay()">
+          <i class="ti ti-player-play" id="spPlayIcon"></i>
+          <span id="spPlayLbl">この結果を再生</span>
+        </button>
+        <button class="btn" onclick="spGo(1)"><i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LEVEL_COLORS=['#1D9E75','#185FA5','#BA7517'];
+const LEVEL_BADGE_CLS=['badge-lv1','badge-lv2','badge-lv3'];
+const LEVEL_NAMES=['初級','中級','上級'];
+const SCENE_NAMES=['タクシー','日常会話','旅行・観光','ビジネス'];
+const SCENE_ICONS=['ti-car','ti-shopping-cart','ti-plane','ti-briefcase'];
+const LEVEL_UNLOCK=[0,60,60];
+
+const DB={
+  'タクシー':{
+    0:[
+      {en:'Welcome',ph:'/ˈwelkəm/',ja:'いらっしゃいませ',phrase:'Welcome aboard!',phrasePh:'/ˈwelkəm əˈbɔːrd/',phraseJa:'ご乗車ありがとうございます！'},
+      {en:'Where to?',ph:'/wer tuː/',ja:'どちらへ？',phrase:'Where would you like to go?',phrasePh:'/wer wʊd juː laɪk tə ɡoʊ/',phraseJa:'どちらへ行きますか？'},
+      {en:'Certainly',ph:'/ˈsɜːrtnli/',ja:'かしこまりました',phrase:'Certainly, right away.',phrasePh:'/ˈsɜːrtnli raɪt əˈweɪ/',phraseJa:'かしこまりました、すぐに参ります。'},
+      {en:'Turn right',ph:'/tɜːrn raɪt/',ja:'右に曲がる',phrase:'Please turn right at the next corner.',phrasePh:'/pliːz tɜːrn raɪt æt ðə nekst ˈkɔːrnər/',phraseJa:'次の角を右に曲がってください。'},
+      {en:'Turn left',ph:'/tɜːrn left/',ja:'左に曲がる',phrase:'Turn left after the traffic light.',phrasePh:'/tɜːrn left ˈæftər ðə ˈtræfɪk laɪt/',phraseJa:'信号の後で左に曲がってください。'},
+      {en:'Go straight',ph:'/ɡoʊ streɪt/',ja:'まっすぐ進む',phrase:'Go straight for about two blocks.',phrasePh:'/ɡoʊ streɪt fɔːr əˈbaʊt tuː blɒks/',phraseJa:'2ブロックほどまっすぐ進んでください。'},
+      {en:'The fare is',ph:'/ðə fer ɪz/',ja:'料金は〜です',phrase:'The fare is twelve hundred yen.',phrasePh:'/ðə fer ɪz twelv ˈhʌndrəd jen/',phraseJa:'料金は1,200円です。'},
+      {en:'Receipt',ph:'/rɪˈsiːt/',ja:'領収書',phrase:'Would you like a receipt?',phrasePh:'/wʊd juː laɪk ə rɪˈsiːt/',phraseJa:'領収書はご入り用ですか？'},
+    ],
+    1:[
+      {en:'Destination',ph:'/ˌdestɪˈneɪʃən/',ja:'目的地',phrase:'What is your final destination?',phrasePh:'/wɒt ɪz jɔːr ˈfaɪnəl ˌdestɪˈneɪʃən/',phraseJa:'最終目的地はどちらですか？'},
+      {en:'Traffic jam',ph:'/ˈtræfɪk dʒæm/',ja:'渋滞',phrase:"There's a traffic jam ahead. Shall I take a detour?",phrasePh:'/ðerz ə ˈtræfɪk dʒæm əˈhed/',phraseJa:'この先が渋滞しています。迂回しますか？'},
+      {en:'Take the highway',ph:'/teɪk ðə ˈhaɪweɪ/',ja:'高速道路を使う',phrase:'Shall I take the highway to save time?',phrasePh:'/ʃæl aɪ teɪk ðə ˈhaɪweɪ tə seɪv taɪm/',phraseJa:'時間短縮のため高速を使いますか？'},
+      {en:'Shortcut',ph:'/ˈʃɔːrtkʌt/',ja:'近道',phrase:'I know a shortcut. Is that okay?',phrasePh:'/aɪ noʊ ə ˈʃɔːrtkʌt ɪz ðæt ˈoʊkeɪ/',phraseJa:'近道を知っています。よろしいですか？'},
+      {en:'Intersection',ph:'/ˌɪntərˈsekʃən/',ja:'交差点',phrase:'Turn left at the next intersection.',phrasePh:'/tɜːrn left æt ðə nekst ˌɪntərˈsekʃən/',phraseJa:'次の交差点で左折します。'},
+      {en:'Keep the change',ph:'/kiːp ðə tʃeɪndʒ/',ja:'お釣りはいりません',phrase:'Please keep the change. Thank you.',phrasePh:'/pliːz kiːp ðə tʃeɪndʒ ˈθæŋk juː/',phraseJa:'お釣りはいりません。ありがとうございます。'},
+      {en:'Credit card',ph:'/ˈkredɪt kɑːrd/',ja:'クレジットカード',phrase:'Do you accept credit cards?',phrasePh:'/duː juː əkˈsept ˈkredɪt kɑːrdz/',phraseJa:'クレジットカードは使えますか？'},
+      {en:'Estimated arrival',ph:'/ˈestɪmeɪtɪd əˈraɪvəl/',ja:'到着予定',phrase:'The estimated arrival time is twenty minutes.',phrasePh:'/ðə ˈestɪmeɪtɪd əˈraɪvəl taɪm ɪz ˈtwenti ˈmɪnɪts/',phraseJa:'到着予定時刻は20分後です。'},
+    ],
+    2:[
+      {en:'Detour',ph:'/ˈdiːtʊr/',ja:'迂回路',phrase:"We'll need to take a detour due to road construction.",phrasePh:'/wiːl niːd tə teɪk ə ˈdiːtʊr/',phraseJa:'道路工事のため迂回が必要です。'},
+      {en:'Surcharge',ph:'/ˈsɜːrtʃɑːrdʒ/',ja:'追加料金',phrase:'There is a late-night surcharge after eleven PM.',phrasePh:'/ðer ɪz ə leɪt naɪt ˈsɜːrtʃɑːrdʒ/',phraseJa:'夜11時以降は深夜割増料金がかかります。'},
+      {en:'Navigation system',ph:'/ˌnævɪˈɡeɪʃən ˈsɪstəm/',ja:'カーナビ',phrase:'Let me check the navigation system for the best route.',phrasePh:'/let miː tʃek ðə ˌnævɪˈɡeɪʃən ˈsɪstəm/',phraseJa:'最良ルートをカーナビで確認します。'},
+      {en:'Pull over',ph:'/pʊl ˈoʊvər/',ja:'路肩に止める',phrase:"I'll pull over here so you can get out safely.",phrasePh:'/aɪl pʊl ˈoʊvər hɪr/',phraseJa:'安全に降りられるよう、ここで路肩に止めます。'},
+      {en:'Fare meter',ph:'/fer ˈmiːtər/',ja:'メーター',phrase:'The fare meter starts at six hundred and eighty yen.',phrasePh:'/ðə fer ˈmiːtər stɑːrts æt sɪks ˈhʌndrəd/',phraseJa:'メーターは680円からスタートします。'},
+    ],
+  },
+  '日常会話':{
+    0:[
+      {en:'Excuse me',ph:'/ɪkˈskjuːz miː/',ja:'すみません',phrase:'Excuse me, where is the nearest station?',phrasePh:'/ɪkˈskjuːz miː wer ɪz ðə ˈnɪərɪst ˈsteɪʃən/',phraseJa:'すみません、最寄り駅はどこですか？'},
+      {en:'How much?',ph:'/haʊ mʌtʃ/',ja:'いくらですか？',phrase:'How much does this cost?',phrasePh:'/haʊ mʌtʃ dʌz ðɪs kɒst/',phraseJa:'これはいくらですか？'},
+      {en:'Thank you',ph:'/ˈθæŋk juː/',ja:'ありがとうございます',phrase:'Thank you so much for your help.',phrasePh:'/ˈθæŋk juː soʊ mʌtʃ fɔːr jɔːr help/',phraseJa:'ご協力ありがとうございます。'},
+      {en:'No problem',ph:'/noʊ ˈprɒbləm/',ja:'大丈夫です',phrase:'No problem at all. Happy to help.',phrasePh:'/noʊ ˈprɒbləm æt ɔːl/',phraseJa:'全然大丈夫です。喜んでお手伝いします。'},
+      {en:'Just a moment',ph:'/dʒʌst ə ˈmoʊmənt/',ja:'少々お待ちください',phrase:'Just a moment, please. I will check for you.',phrasePh:'/dʒʌst ə ˈmoʊmənt pliːz/',phraseJa:'少々お待ちください。確認します。'},
+      {en:'I would like',ph:'/aɪ wʊd laɪk/',ja:'〜をください',phrase:'I would like a coffee, please.',phrasePh:'/aɪ wʊd laɪk ə ˈkɒfi pliːz/',phraseJa:'コーヒーをください。'},
+    ],
+    1:[
+      {en:'Do you have',ph:'/duː juː hæv/',ja:'〜はありますか？',phrase:'Do you have a menu in English?',phrasePh:'/duː juː hæv ə ˈmenjuː ɪn ˈɪŋɡlɪʃ/',phraseJa:'英語のメニューはありますか？'},
+      {en:'Recommendation',ph:'/ˌrekəmenˈdeɪʃən/',ja:'おすすめ',phrase:'What is your recommendation for today?',phrasePh:'/wɒt ɪz jɔːr ˌrekəmenˈdeɪʃən fɔːr təˈdeɪ/',phraseJa:'本日のおすすめは何ですか？'},
+      {en:'To go',ph:'/tə ɡoʊ/',ja:'テイクアウト',phrase:'Is that for here or to go?',phrasePh:'/ɪz ðæt fɔːr hɪr ɔːr tə ɡoʊ/',phraseJa:'店内でお召し上がりですか、テイクアウトですか？'},
+      {en:'Allergic to',ph:'/əˈlɜːrdʒɪk tuː/',ja:'〜アレルギー',phrase:'I am allergic to shellfish and nuts.',phrasePh:'/aɪ æm əˈlɜːrdʒɪk tə ˈʃelfɪʃ/',phraseJa:'私は貝類とナッツのアレルギーがあります。'},
+      {en:'Out of stock',ph:'/aʊt əv stɒk/',ja:'在庫切れ',phrase:'Sorry, that item is out of stock right now.',phrasePh:'/ˈsɒri ðæt ˈaɪtəm ɪz aʊt əv stɒk/',phraseJa:'申し訳ありません、その商品は現在在庫切れです。'},
+      {en:'Refund',ph:'/ˈriːfʌnd/',ja:'返金',phrase:'I would like a refund for this item, please.',phrasePh:'/aɪ wʊd laɪk ə ˈriːfʌnd fɔːr ðɪs ˈaɪtəm/',phraseJa:'この商品を返金していただきたいのですが。'},
+    ],
+    2:[
+      {en:'Complimentary',ph:'/ˌkɒmplɪˈmentəri/',ja:'無料サービスの',phrase:'This dessert is complimentary from the chef.',phrasePh:'/ðɪs dɪˈzɜːrt ɪz ˌkɒmplɪˈmentəri/',phraseJa:'このデザートはシェフからのサービスです。'},
+      {en:'Split the bill',ph:'/splɪt ðə bɪl/',ja:'割り勘',phrase:'Could we split the bill evenly?',phrasePh:'/kʊd wiː splɪt ðə bɪl ˈiːvənli/',phraseJa:'割り勘にしていただけますか？'},
+      {en:'Dietary restriction',ph:'/ˈdaɪətəri rɪˈstrɪkʃən/',ja:'食事制限',phrase:'Do you have any dietary restrictions I should know about?',phrasePh:'/duː juː hæv ˈeni ˈdaɪətəri rɪˈstrɪkʃənz/',phraseJa:'何か食事制限はございますか？'},
+    ],
+  },
+  '旅行・観光':{
+    0:[
+      {en:'Tourist spot',ph:'/ˈtʊərɪst spɒt/',ja:'観光スポット',phrase:'What tourist spots do you recommend nearby?',phrasePh:'/wɒt ˈtʊərɪst spɒts duː juː ˌrekəˈmend ˈnɪərbaɪ/',phraseJa:'近くのおすすめ観光スポットはどこですか？'},
+      {en:'Map',ph:'/mæp/',ja:'地図',phrase:'Do you have a map of the city?',phrasePh:'/duː juː hæv ə mæp əv ðə ˈsɪti/',phraseJa:'市内の地図はありますか？'},
+      {en:'Sightseeing',ph:'/ˈsaɪtsiːɪŋ/',ja:'観光',phrase:'We are here for sightseeing for three days.',phrasePh:'/wiː ɑːr hɪr fɔːr ˈsaɪtsiːɪŋ fɔːr θriː deɪz/',phraseJa:'3日間の観光で来ています。'},
+      {en:'Famous for',ph:'/ˈfeɪməs fɔːr/',ja:'〜で有名',phrase:'Sapporo is famous for its snow festival.',phrasePh:'/ˈsæpɔːroʊ ɪz ˈfeɪməs fɔːr ɪts snoʊ ˈfestɪvəl/',phraseJa:'札幌は雪まつりで有名です。'},
+      {en:'Must-see',ph:'/mʌst siː/',ja:'必見の',phrase:'What is the must-see attraction in Hokkaido?',phrasePh:'/wɒt ɪz ðə mʌst siː əˈtrækʃən/',phraseJa:'北海道で必見の観光地はどこですか？'},
+      {en:'How far is it?',ph:'/haʊ fɑːr ɪz ɪt/',ja:'どのくらいの距離ですか？',phrase:'How far is it from here to the airport?',phrasePh:'/haʊ fɑːr ɪz ɪt frəm hɪr tə ðə ˈerpɔːrt/',phraseJa:'ここから空港までどのくらいかかりますか？'},
+    ],
+    1:[
+      {en:'Airport',ph:'/ˈerpɔːrt/',ja:'空港',phrase:'Take me to the international airport, please.',phrasePh:'/teɪk miː tə ðə ˌɪntərˈnæʃənəl ˈerpɔːrt pliːz/',phraseJa:'国際空港まで連れて行ってください。'},
+      {en:'Terminal',ph:'/ˈtɜːrmɪnəl/',ja:'ターミナル',phrase:'Which terminal does my airline use?',phrasePh:'/wɪtʃ ˈtɜːrmɪnəl dʌz maɪ ˈerlaɪn juːz/',phraseJa:'私の航空会社はどのターミナルを使いますか？'},
+      {en:'Round trip',ph:'/raʊnd trɪp/',ja:'往復',phrase:'I need a round trip ticket to Tokyo.',phrasePh:'/aɪ niːd ə raʊnd trɪp ˈtɪkɪt tə toʊkioʊ/',phraseJa:'東京までの往復チケットが必要です。'},
+      {en:'Admission fee',ph:'/ədˈmɪʃən fiː/',ja:'入場料',phrase:'What is the admission fee for the museum?',phrasePh:'/wɒt ɪz ðə ədˈmɪʃən fiː fɔːr ðə mjuːˈziːəm/',phraseJa:'博物館の入場料はいくらですか？'},
+      {en:'Souvenir',ph:'/ˌsuːvəˈnɪər/',ja:'お土産',phrase:'Where is the best place to buy souvenirs?',phrasePh:'/wer ɪz ðə best pleɪs tə baɪ ˌsuːvəˈnɪərz/',phraseJa:'お土産を買うのに一番いい場所はどこですか？'},
+      {en:'Scenic route',ph:'/ˈsiːnɪk ruːt/',ja:'景色の良いルート',phrase:'Is there a scenic route to the hotel?',phrasePh:'/ɪz ðer ə ˈsiːnɪk ruːt tə ðə hoʊˈtel/',phraseJa:'ホテルまでの景色の良いルートはありますか？'},
+    ],
+    2:[
+      {en:'Check-in',ph:'/ˈtʃek ɪn/',ja:'チェックイン',phrase:'Where is the check-in counter for this airline?',phrasePh:'/wer ɪz ðə ˈtʃek ɪn ˈkaʊntər/',phraseJa:'この航空会社のチェックインカウンターはどこですか？'},
+      {en:'Luggage',ph:'/ˈlʌɡɪdʒ/',ja:'荷物',phrase:'Could you help me with my luggage, please?',phrasePh:'/kʊd juː help miː wɪð maɪ ˈlʌɡɪdʒ pliːz/',phraseJa:'荷物を運ぶのを手伝っていただけますか？'},
+      {en:'Off the beaten path',ph:'/ɒf ðə ˈbiːtən pæθ/',ja:'穴場',phrase:'Do you know any off the beaten path spots in Sapporo?',phrasePh:'/duː juː noʊ ˈeni ɒf ðə ˈbiːtən pæθ spɒts/',phraseJa:'札幌の穴場スポットを知っていますか？'},
+      {en:'Itinerary',ph:'/aɪˈtɪnəreri/',ja:'旅程',phrase:"What's on your itinerary for today?",phrasePh:'/wɒts ɒn jɔːr aɪˈtɪnəreri fɔːr təˈdeɪ/',phraseJa:'今日の旅程はどのようなご予定ですか？'},
+    ],
+  },
+  'ビジネス':{
+    0:[
+      {en:'Meeting',ph:'/ˈmiːtɪŋ/',ja:'会議・打ち合わせ',phrase:'I have an important meeting at nine AM.',phrasePh:'/aɪ hæv ən ɪmˈpɔːrtənt ˈmiːtɪŋ æt naɪn eɪˈem/',phraseJa:'午前9時に重要な会議があります。'},
+      {en:'Headquarters',ph:'/ˈhedˌkwɔːrtərz/',ja:'本社',phrase:'Please take me to the company headquarters.',phrasePh:'/pliːz teɪk miː tə ðə ˈkʌmpəni ˈhedˌkwɔːrtərz/',phraseJa:'会社の本社まで連れて行ってください。'},
+      {en:'On time',ph:'/ɒn taɪm/',ja:'時間通りに',phrase:'Will we arrive on time for the meeting?',phrasePh:'/wɪl wiː əˈraɪv ɒn taɪm fɔːr ðə ˈmiːtɪŋ/',phraseJa:'会議に時間通りに到着できますか？'},
+      {en:'Rush hour',ph:'/rʌʃ ˈaʊər/',ja:'ラッシュアワー',phrase:'Rush hour traffic may cause a delay.',phrasePh:'/rʌʃ ˈaʊər ˈtræfɪk meɪ kɔːz ə dɪˈleɪ/',phraseJa:'ラッシュアワーの渋滞で遅れるかもしれません。'},
+      {en:'Business district',ph:'/ˈbɪznəs ˈdɪstrɪkt/',ja:'ビジネス街',phrase:'Drop me off at the business district, please.',phrasePh:'/drɒp miː ɒf æt ðə ˈbɪznəs ˈdɪstrɪkt pliːz/',phraseJa:'ビジネス街で降ろしてください。'},
+      {en:'Conference',ph:'/ˈkɒnfərəns/',ja:'会議・カンファレンス',phrase:'The international conference starts at two PM.',phrasePh:'/ðə ˌɪntərˈnæʃənəl ˈkɒnfərəns stɑːrts æt tuː piːˈem/',phraseJa:'国際カンファレンスは午後2時に始まります。'},
+    ],
+    1:[
+      {en:'Appointment',ph:'/əˈpɔɪntmənt/',ja:'予約・アポ',phrase:'I have an appointment with the director at three.',phrasePh:'/aɪ hæv ən əˈpɔɪntmənt wɪð ðə dɪˈrektər æt θriː/',phraseJa:'3時に部長とアポがあります。'},
+      {en:'Urgent',ph:'/ˈɜːrdʒənt/',ja:'急ぎの',phrase:"It's urgent. Could you please hurry?",phrasePh:'/ɪts ˈɜːrdʒənt kʊd juː pliːz ˈhɜːri/',phraseJa:'急いでいます。急いでいただけますか？'},
+      {en:'Deadline',ph:'/ˈdedlaɪn/',ja:'締め切り',phrase:'I must not miss this deadline.',phrasePh:'/aɪ mʌst nɒt mɪs ðɪs ˈdedlaɪn/',phraseJa:'この締め切りは絶対に守らなければなりません。'},
+      {en:'Client',ph:'/ˈklaɪənt/',ja:'クライアント・顧客',phrase:'I am meeting an important client from overseas.',phrasePh:'/aɪ æm ˈmiːtɪŋ ən ɪmˈpɔːrtənt ˈklaɪənt frəm ˌoʊvərˈsiːz/',phraseJa:'海外からの重要なクライアントと会います。'},
+      {en:'Presentation',ph:'/ˌprezənˈteɪʃən/',ja:'プレゼン',phrase:'My presentation to the board is in one hour.',phrasePh:'/maɪ ˌprezənˈteɪʃən tə ðə bɔːrd ɪz ɪn wʌn ˈaʊər/',phraseJa:'1時間後に役員へのプレゼンがあります。'},
+    ],
+    2:[
+      {en:'Confidential',ph:'/ˌkɒnfɪˈdenʃəl/',ja:'機密の',phrase:'Please keep this information strictly confidential.',phrasePh:'/pliːz kiːp ðɪs ˌɪnfəˈmeɪʃən ˈstrɪktli ˌkɒnfɪˈdenʃəl/',phraseJa:'この情報は厳重に機密扱いにしてください。'},
+      {en:'Merger',ph:'/ˈmɜːrdʒər/',ja:'合併',phrase:'The merger announcement will be made next week.',phrasePh:'/ðə ˈmɜːrdʒər əˈnaʊnsmənt wɪl biː meɪd nekst wiːk/',phraseJa:'合併の発表は来週行われます。'},
+      {en:'Quarterly report',ph:'/ˈkwɔːrtərli rɪˈpɔːrt/',ja:'四半期報告',phrase:'The quarterly report shows strong growth this term.',phrasePh:'/ðə ˈkwɔːrtərli rɪˈpɔːrt ʃoʊz strɒŋ ɡroʊθ ðɪs tɜːrm/',phraseJa:'四半期報告では今期の力強い成長が示されています。'},
+    ],
+  },
+};
+
+const STORAGE_KEY='eng_vocab_mastered_v1';
+let mastered={};
+try{const s=localStorage.getItem(STORAGE_KEY);if(s)mastered=JSON.parse(s);}catch(e){}
+function saveMastered(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(mastered));}catch(e){}}
+
+let curScene=0,curLevel=0,curIdx=0;
+let isPlaying=false,playTimer=null,onlyUnseen=false;
+let searchResults=[],spIdx=0,spPlaying=false,spTimer=null;
+const synth=window.speechSynthesis;
+
+function switchMode(m){
+  stopPlay();stopSpPlay();
+  document.querySelectorAll('.tab-nav-btn').forEach((b,i)=>b.classList.toggle('active',i===(m==='learn'?0:1)));
+  document.getElementById('sec-learn').classList.toggle('visible',m==='learn');
+  document.getElementById('sec-search').classList.toggle('visible',m==='search');
+  if(m==='search')document.getElementById('searchInput').focus();
+}
+function hl(text,q){
+  if(!q)return text;
+  const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return text.replace(re,'<mark>$1</mark>');
+}
+function doSearch(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  const resultEl=document.getElementById('searchResults');
+  const countEl=document.getElementById('resultCount');
+  const playArea=document.getElementById('searchPlayArea');
+  stopSpPlay();
+  if(!q){
+    resultEl.innerHTML='<div class="no-result"><i class="ti ti-search" style="font-size:28px;"></i><br>キーワードを入力してください<br><span style="font-size:11px;">例：空港 / airport / 渋滞 / traffic</span></div>';
+    countEl.textContent='全単語から横断検索できます';
+    playArea.style.display='none';searchResults=[];return;
+  }
+  const all=[];
+  SCENE_NAMES.forEach((sc,si)=>[0,1,2].forEach(l=>{
+    (DB[sc][l]||[]).forEach((w,wi)=>all.push({...w,scene:sc,sceneIdx:si,level:l,wordIdx:wi}));
+  }));
+  searchResults=all.filter(w=>[w.en,w.ja,w.phrase||'',w.phraseJa||''].join(' ').toLowerCase().includes(q));
+  countEl.textContent=searchResults.length?`${searchResults.length}件ヒット`:'該当する単語が見つかりませんでした';
+  if(!searchResults.length){
+    resultEl.innerHTML=`<div class="no-result"><i class="ti ti-search" style="font-size:28px;"></i><br>「${q}」に関連する単語は見つかりませんでした</div>`;
+    playArea.style.display='none';return;
+  }
+  resultEl.innerHTML=searchResults.map((w,i)=>`
+    <div class="srow${i===0?' cur':''}" id="srow${i}" onclick="spJumpTo(${i})">
+      <div class="srow-top"><span class="srow-en">${hl(w.en,q)}</span><span class="srow-ja">${hl(w.ja,q)}</span></div>
+      ${w.phrase?`<div class="srow-phrase">${hl(w.phrase,q)}</div><div class="srow-phrase-ja">${hl(w.phraseJa||'',q)}</div>`:''}
+      <div class="srow-badges">
+        <span class="sbadge" style="background:var(--bg2);color:var(--text2);">${w.scene}</span>
+        <span class="sbadge ${LEVEL_BADGE_CLS[w.level]}">${LEVEL_NAMES[w.level]}</span>
+      </div>
+    </div>`).join('');
+  spIdx=0;playArea.style.display='block';showSpWord();
+}
+function clearSearch(){document.getElementById('searchInput').value='';doSearch();}
+function spJumpTo(i){stopSpPlay();spIdx=i;showSpWord();highlightSpRow();}
+function spGo(d){stopSpPlay();spIdx=(spIdx+d+searchResults.length)%searchResults.length;showSpWord();highlightSpRow();}
+function highlightSpRow(){document.querySelectorAll('.srow').forEach((r,i)=>r.classList.toggle('cur',i===spIdx));}
+function showSpWord(){
+  if(!searchResults.length)return;
+  const w=searchResults[spIdx];
+  document.getElementById('spWordMeta').textContent=(spIdx+1)+' / '+searchResults.length;
+  document.getElementById('spEnWord').textContent=w.en;
+  document.getElementById('spPhonetic').textContent=w.ph;
+  document.getElementById('spJaWord').textContent=w.ja;
+  document.getElementById('spPhraseEn').textContent=w.phrase||'—';
+  document.getElementById('spPhrasePh').textContent=w.phrasePh||'';
+  document.getElementById('spPhraseJa').textContent=w.phraseJa||'—';
+  document.getElementById('spSceneBadge').textContent=w.scene;
+  document.getElementById('spLevelBadge').textContent=LEVEL_NAMES[w.level];
+  document.getElementById('spLevelBadge').className='badge '+LEVEL_BADGE_CLS[w.level];
+  highlightSpRow();
+}
+function toggleSpPlay(){spPlaying?stopSpPlay():startSpPlay();}
+function startSpPlay(){
+  if(!searchResults.length)return;
+  spPlaying=true;
+  document.getElementById('spPlayIcon').className='ti ti-player-pause';
+  document.getElementById('spPlayLbl').textContent='一時停止';
+  playSpWord();
+}
+function stopSpPlay(){
+  spPlaying=false;synth.cancel();clearTimeout(spTimer);
+  document.getElementById('spPlayIcon').className='ti ti-player-play';
+  document.getElementById('spPlayLbl').textContent='この結果を再生';
+  document.getElementById('spStepBadge').style.display='none';
+}
+function setSpStep(t){const e=document.getElementById('spStepBadge');if(t){e.textContent=t;e.style.display='inline-block';}else e.style.display='none';}
+function getPause(){return parseInt(document.getElementById('pauseSlider').value)*1000;}
+function speak(text,lang,rate,cb){
+  synth.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=rate;u.onend=cb;synth.speak(u);
+}
+function playSpWord(){
+  if(!spPlaying||!searchResults.length)return;
+  if(spIdx>=searchResults.length)spIdx=0;
+  showSpWord();
+  const w=searchResults[spIdx];
+  setSpStep('単語 — 通常');
+  speak(w.en,'en-US',1.0,()=>{
+    if(!spPlaying)return;setSpStep('単語 — ゆっくり');
+    spTimer=setTimeout(()=>{speak(w.en,'en-US',0.6,()=>{
+      if(!spPlaying)return;setSpStep('単語 — 日本語');
+      spTimer=setTimeout(()=>{speak(w.ja,'ja-JP',1.0,()=>{
+        if(!spPlaying)return;
+        if(!w.phrase){afterSp();return;}
+        spTimer=setTimeout(()=>{setSpStep('熟語 — 通常');speak(w.phrase,'en-US',1.0,()=>{
+          if(!spPlaying)return;setSpStep('熟語 — ゆっくり');
+          spTimer=setTimeout(()=>{speak(w.phrase,'en-US',0.6,()=>{
+            if(!spPlaying)return;setSpStep('熟語 — 日本語');
+            spTimer=setTimeout(()=>{speak(w.phraseJa||'','ja-JP',1.0,()=>{if(!spPlaying)return;afterSp();});},400);
+          });},400);
+        });},500);
+      });},400);
+    });},400);
+  });
+}
+function afterSp(){spTimer=setTimeout(()=>{spIdx++;if(spIdx>=searchResults.length){if(document.getElementById('loopCk').checked){spIdx=0;playSpWord();}else{spIdx=searchResults.length-1;stopSpPlay();}}else{playSpWord();}},getPause());}
+
+function sceneKey(){return SCENE_NAMES[curScene];}
+function levelWords(){const all=DB[sceneKey()][curLevel]||[];return onlyUnseen?all.filter((_,i)=>!isMastered(curScene,curLevel,i)):all;}
+function mastKey(s,l,i){return s+'_'+l+'_'+i;}
+function isMastered(s,l,i){return !!mastered[mastKey(s,l,i)];}
+function masterCount(si,l){return(DB[SCENE_NAMES[si]][l]||[]).filter((_,i)=>isMastered(si,l,i)).length;}
+function levelUnlocked(l){
+  if(l===0)return true;
+  let sum=0,total=0;
+  SCENE_NAMES.forEach((sc,si)=>{const a=DB[sc][l-1]||[];total+=a.length;sum+=masterCount(si,l-1);});
+  return total>0&&(sum/total*100)>=LEVEL_UNLOCK[l];
+}
+function buildSceneTabs(){
+  document.getElementById('sceneTabs').innerHTML=SCENE_NAMES.map((s,i)=>
+    `<div class="stab${i===curScene?' active':''}" onclick="selectScene(${i})"><i class="ti ${SCENE_ICONS[i]}"></i> ${s}</div>`).join('');
+}
+function buildLevelTabs(){
+  [0,1,2].forEach(l=>{
+    const el=document.getElementById('ltab'+l);const ok=levelUnlocked(l);
+    el.className='ltab'+(l===curLevel?' active':'')+(ok?'':' locked');
+    el.innerHTML=ok?`<i class="ti ti-star"></i> ${LEVEL_NAMES[l]}`:`<i class="ti ti-lock"></i> ${LEVEL_NAMES[l]}`;
+  });
+}
+function updateStats(){
+  const w=DB[sceneKey()][curLevel]||[];const done=masterCount(curScene,curLevel);
+  document.getElementById('doneCount').textContent=done+' / '+w.length;
+  document.getElementById('pctVal').textContent=w.length?Math.round(done/w.length*100)+'%':'0%';
+  document.getElementById('topLabel').textContent=sceneKey()+' — Lv.'+(curLevel+1)+' '+LEVEL_NAMES[curLevel];
+}
+function buildWordList(){
+  const allW=DB[sceneKey()][curLevel]||[];const dispW=levelWords();
+  document.getElementById('wordList').innerHTML=dispW.map((w,di)=>{
+    const ri=allW.indexOf(w);const done=isMastered(curScene,curLevel,ri);
+    return `<div class="wrow${di===curIdx?' cur':''}${done?' done':''}" onclick="jumpTo(${di})">
+      <span class="wnum">${di+1}</span><span class="wen">${w.en}</span><span class="wja">${w.ja}</span>
+      ${done?'<span class="wcheck"><i class="ti ti-check"></i></span>':''}
+    </div>`;
+  }).join('');
+}
+function setStep(t){const e=document.getElementById('stepBadge');if(t){e.textContent=t;e.style.display='inline-block';}else e.style.display='none';}
+function showWord(){
+  const words=levelWords();if(!words.length){document.getElementById('enWord').textContent='単語なし';return;}
+  if(curIdx>=words.length)curIdx=0;
+  const w=words[curIdx];const hideJp=document.getElementById('hideJpCk').checked;
+  document.getElementById('wordMeta').textContent=(curIdx+1)+' / '+words.length;
+  document.getElementById('enWord').textContent=w.en;
+  document.getElementById('phonetic').textContent=w.ph;
+  document.getElementById('jaWord').textContent=w.ja;
+  document.getElementById('jaWord').style.opacity=hideJp?'0':'1';
+  document.getElementById('phraseEn').textContent=w.phrase||'';
+  document.getElementById('phrasePh').textContent=w.phrasePh||'';
+  document.getElementById('phraseJa').textContent=w.phraseJa||'';
+  document.getElementById('phraseJa').style.opacity=hideJp?'0':'1';
+  document.getElementById('progFill').style.width=((curIdx+1)/words.length*100)+'%';
+  document.getElementById('progFill').style.background=LEVEL_COLORS[curLevel];
+  document.getElementById('levelBadge').textContent=LEVEL_NAMES[curLevel];
+  document.getElementById('levelBadge').className='badge '+LEVEL_BADGE_CLS[curLevel];
+  buildWordList();updateStats();
+}
+function selectScene(i){stopPlay();curScene=i;curIdx=0;buildSceneTabs();buildWordList();showWord();}
+function selectLevel(l){
+  if(!levelUnlocked(l)){document.getElementById('statusTxt').textContent='前レベルを60%習得するとアンロック';return;}
+  stopPlay();curLevel=l;curIdx=0;buildLevelTabs();buildWordList();showWord();
+}
+function jumpTo(i){stopPlay();curIdx=i;showWord();}
+function go(d){stopPlay();const w=levelWords();curIdx=(curIdx+d+w.length)%w.length;showWord();}
+function markWord(ok){
+  const allW=DB[sceneKey()][curLevel]||[];const dispW=levelWords();if(!dispW.length)return;
+  mastered[mastKey(curScene,curLevel,allW.indexOf(dispW[curIdx]))]=ok;
+  saveMastered();buildLevelTabs();updateStats();
+  const nw=levelWords();curIdx=Math.min(curIdx,nw.length-1);showWord();
+}
+function toggleOnlyUnseen(){
+  onlyUnseen=!onlyUnseen;curIdx=0;
+  document.getElementById('filterBtn').classList.toggle('filter-btn-active',onlyUnseen);
+  buildWordList();showWord();
+}
+function togglePlay(){isPlaying?stopPlay():startPlay();}
+function startPlay(){if(!levelWords().length)return;isPlaying=true;document.getElementById('playIcon').className='ti ti-player-pause';document.getElementById('playLbl').textContent='一時停止';playWord();}
+function stopPlay(){
+  isPlaying=false;synth.cancel();clearTimeout(playTimer);
+  document.getElementById('playIcon').className='ti ti-player-play';document.getElementById('playLbl').textContent='再生スタート';
+  document.getElementById('statusTxt').textContent='一時停止中';setStep('');
+}
+function playWord(){
+  if(!isPlaying)return;
+  const words=levelWords();if(!words.length){stopPlay();return;}
+  if(curIdx>=words.length)curIdx=0;
+  showWord();const w=words[curIdx];const hideJp=document.getElementById('hideJpCk').checked;
+  const skipPhrase=document.getElementById('skipPhraseCk').checked;
+  document.getElementById('jaWord').style.opacity='0';
+  setStep('単語 — 通常');
+  speak(w.en,'en-US',1.0,()=>{
+    if(!isPlaying)return;setStep('単語 — ゆっくり');
+    playTimer=setTimeout(()=>{speak(w.en,'en-US',0.6,()=>{
+      if(!isPlaying)return;setStep('単語 — 日本語');
+      playTimer=setTimeout(()=>{
+        if(!hideJp)document.getElementById('jaWord').style.opacity='1';
+        speak(w.ja,'ja-JP',1.0,()=>{
+          if(!isPlaying)return;
+          if(skipPhrase||!w.phrase){afterPhrase(words);return;}
+          playTimer=setTimeout(()=>{setStep('熟語 — 通常');speak(w.phrase,'en-US',1.0,()=>{
+            if(!isPlaying)return;setStep('熟語 — ゆっくり');
+            playTimer=setTimeout(()=>{speak(w.phrase,'en-US',0.6,()=>{
+              if(!isPlaying)return;setStep('熟語 — 日本語');
+              playTimer=setTimeout(()=>{
+                if(!hideJp)document.getElementById('phraseJa').style.opacity='1';
+                speak(w.phraseJa||'','ja-JP',1.0,()=>{if(!isPlaying)return;afterPhrase(words);});
+              },400);
+            });},400);
+          });},500);
+        });
+      },400);
+    });},400);
+  });
+}
+function afterPhrase(words){
+  playTimer=setTimeout(()=>{
+    curIdx++;const nw=levelWords();
+    if(curIdx>=nw.length){if(document.getElementById('loopCk').checked){curIdx=0;playWord();}else{curIdx=nw.length-1;stopPlay();document.getElementById('statusTxt').textContent='完了！';}}
+    else{playWord();}
+  },getPause());
+}
+
+buildSceneTabs();buildLevelTabs();buildWordList();showWord();
+</script>
+</body>
+</html>
